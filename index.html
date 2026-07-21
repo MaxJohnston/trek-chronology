@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Master Chronology — A Star Trek Watch Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+__CSS__
+</style>
+</head>
+<body>
+
+<div class="app" id="app">
+
+  <header class="topbar">
+    <div class="elbow-block">
+      <div class="elbow"></div>
+      <div class="title-bar">
+        <h1>MASTER CHRONOLOGY</h1>
+        <p class="subtitle">A Star Trek Viewing Guide</p>
+      </div>
+    </div>
+    <div class="stripe-set">
+      <div class="stripe" style="background:var(--amber)"></div>
+      <div class="stripe" style="background:var(--blue)"></div>
+      <div class="stripe" style="background:var(--rose)"></div>
+      <div class="stripe" style="background:var(--violet)"></div>
+      <div class="stripe" style="background:var(--tan)"></div>
+    </div>
+    <div class="readout-block">
+      <div class="readout-label">ENTRIES LOGGED</div>
+      <div class="readout-value" id="statProgress">0 / 0</div>
+      <div class="readout-label">STARDATE (LIVE)</div>
+      <div class="readout-value mono" id="liveStardate">—</div>
+    </div>
+  </header>
+
+  <div class="content">
+
+    <aside class="sidebar" id="sidebar">
+
+      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="sidebar">CONTROLS ▾</button>
+
+      <div class="panel">
+        <div class="panel-label">Viewing Sequence</div>
+        <div class="segmented" id="orderToggle" role="tablist">
+          <button class="seg-btn active" data-order="c" role="tab" aria-selected="true">Chronological</button>
+          <button class="seg-btn" data-order="a" role="tab" aria-selected="false">Release Order</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Search Log</div>
+        <input type="text" id="searchInput" class="search-input" placeholder="Search titles…" autocomplete="off">
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Canon Status</div>
+        <div class="segmented segmented-3" id="canonToggle" role="tablist">
+          <button class="seg-btn active" data-canon="all" role="tab" aria-selected="true">All</button>
+          <button class="seg-btn" data-canon="canon" role="tab" aria-selected="false">Canon</button>
+          <button class="seg-btn" data-canon="noncanon" role="tab" aria-selected="false">Other</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label-row">
+          <div class="panel-label">Series &amp; Productions</div>
+          <div class="chip-actions">
+            <button class="link-btn" id="selectAllShows">All</button><span class="sep">/</span><button class="link-btn" id="selectNoneShows">None</button>
+          </div>
+        </div>
+        <div class="show-chips" id="showChips"></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Progress</div>
+        <div class="conduit-gauge">
+          <div class="conduit-track"><div class="conduit-fill" id="conduitFill"></div></div>
+          <div class="conduit-pct" id="conduitPct">0%</div>
+        </div>
+        <button class="action-btn" id="jumpNext">⏵ Jump to Next Unwatched</button>
+        <button class="action-btn subtle" id="resetProgress">Clear Viewing History</button>
+      </div>
+
+      <div class="panel legend-panel">
+        <div class="panel-label">Canon Key</div>
+        <div class="legend-grid">
+          <span><b>Y</b> Canon</span>
+          <span><b>Y?</b> Canon?</span>
+          <span><b>M</b> Maybe</span>
+          <span><b>N</b> Non-canon</span>
+          <span><b>B</b> Branch timeline</span>
+          <span><b>R</b> Retconned</span>
+        </div>
+      </div>
+
+    </aside>
+
+    <main class="main" id="main">
+      <div class="list-head" id="listHead"></div>
+      <div class="list" id="list"></div>
+      <div class="empty-state" id="emptyState" hidden>
+        <p>No entries match your current filters.</p>
+        <button class="action-btn" id="emptyReset">Reset Filters</button>
+      </div>
+    </main>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+
+<script>
+__JS__
+</script>
+</body>
+</html>
