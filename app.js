@@ -41,7 +41,7 @@
     Comic:{name:"Comics & Tie-ins",            color:"#D9A441"}
   };
 
-  var CANON_CODES = { canon: ["Y","YM","Y?","B"], noncanon: ["N","?","M","R"] };
+  var CANON_CODES = { canon: ["Y","YM"], noncanon: ["N","Y?","?","M","R","B"] };
 
   // ---------- state ----------
   var state = {
@@ -52,55 +52,61 @@
     watched: new Set()
   };
 
-  var STORAGE_OK = !!(window.storage && window.storage.get);
+  var STORAGE_KEY_WATCHED = 'trek-chronology:watched';
+  var STORAGE_KEY_SETTINGS = 'trek-chronology:settings';
+  var STORAGE_OK = (function(){
+    try{
+      var testKey = '__trek_storage_test__';
+      localStorage.setItem(testKey, '1');
+      localStorage.removeItem(testKey);
+      return true;
+    }catch(e){
+      return false;
+    }
+  })();
 
   // ---------- persistence ----------
   function loadStorage(){
-    var tasks = [];
     if (!STORAGE_OK){ render(); return; }
 
-    tasks.push(
-      window.storage.get('watched', false).then(function(res){
-        if (res && res.value){
-          try{
-            var arr = JSON.parse(res.value);
-            state.watched = new Set(arr);
-          }catch(e){}
-        }
-      }).catch(function(){})
-    );
+    try{
+      var watchedRaw = localStorage.getItem(STORAGE_KEY_WATCHED);
+      if (watchedRaw){
+        var arr = JSON.parse(watchedRaw);
+        state.watched = new Set(arr);
+      }
+    }catch(e){}
 
-    tasks.push(
-      window.storage.get('settings', false).then(function(res){
-        if (res && res.value){
-          try{
-            var s = JSON.parse(res.value);
-            if (s.order) state.order = s.order;
-            if (s.canon) state.canon = s.canon;
-            if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
-          }catch(e){}
-        }
-      }).catch(function(){})
-    );
+    try{
+      var settingsRaw = localStorage.getItem(STORAGE_KEY_SETTINGS);
+      if (settingsRaw){
+        var s = JSON.parse(settingsRaw);
+        if (s.order) state.order = s.order;
+        if (s.canon) state.canon = s.canon;
+        if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
+      }
+    }catch(e){}
 
-    Promise.all(tasks).then(function(){
-      syncControlsToState();
-      render();
-    });
+    syncControlsToState();
+    render();
   }
 
   function saveWatched(){
     if (!STORAGE_OK) return;
-    window.storage.set('watched', JSON.stringify(Array.from(state.watched)), false).catch(function(){});
+    try{
+      localStorage.setItem(STORAGE_KEY_WATCHED, JSON.stringify(Array.from(state.watched)));
+    }catch(e){}
   }
 
   function saveSettings(){
     if (!STORAGE_OK) return;
-    window.storage.set('settings', JSON.stringify({
-      order: state.order,
-      canon: state.canon,
-      shows: Array.from(state.shows)
-    }), false).catch(function(){});
+    try{
+      localStorage.setItem(STORAGE_KEY_SETTINGS, JSON.stringify({
+        order: state.order,
+        canon: state.canon,
+        shows: Array.from(state.shows)
+      }));
+    }catch(e){}
   }
 
   function syncControlsToState(){
