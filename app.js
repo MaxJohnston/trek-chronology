@@ -41,7 +41,7 @@
     Comic:{name:"Comics & Tie-ins",            color:"#D9A441"}
   };
 
-  var CANON_CODES = { canon: ["Y","YM"], noncanon: ["N","Y?","?","M","R","B"] };
+  var CANON_CODES = { canon: ["Y","YM","Y?","B"], noncanon: ["N","?","M","R"] };
 
   // ---------- state ----------
   var state = {
