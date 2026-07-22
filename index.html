@@ -21,7 +21,7 @@ __CSS__
       <div class="elbow"></div>
       <div class="title-bar">
         <h1>MASTER CHRONOLOGY</h1>
-        <p class="subtitle">A Star Trek Viewing Guide</p>
+        <p class="subtitle">A Star Trek Viewing Archive · Prime &amp; Kelvin Timelines</p>
       </div>
     </div>
     <div class="stripe-set">
@@ -41,12 +41,13 @@ __CSS__
 
   <div class="content">
 
-    <aside class="sidebar" id="sidebar">
+    <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="sidebar">CONTROLS ▾</button>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="sidebar">CONTROLS ▾</button>
+    <aside class="sidebar" id="sidebar">
 
       <div class="panel">
         <div class="panel-label">Viewing Sequence</div>
+
         <div class="segmented" id="orderToggle" role="tablist">
           <button class="seg-btn active" data-order="c" role="tab" aria-selected="true">Chronological</button>
           <button class="seg-btn" data-order="a" role="tab" aria-selected="false">Release Order</button>
@@ -91,7 +92,7 @@ __CSS__
         <div class="panel-label">Canon Key</div>
         <div class="legend-grid">
           <span><b>Y</b> Canon</span>
-          <span><b>Y?</b> Canon?</span>
+          <span><b>Y?</b> Disputed</span>
           <span><b>M</b> Maybe</span>
           <span><b>N</b> Non-canon</span>
           <span><b>B</b> Branch timeline</span>
