@@ -45,7 +45,7 @@ input{ font-family: inherit; }
   overflow:hidden;
 }
 
-/* ---------- TOP BAR ---------- */
+/* header / LCARS elbow bar */
 .topbar{
   display:flex;
   align-items:stretch;
@@ -135,7 +135,6 @@ input{ font-family: inherit; }
 }
 .readout-value.mono{ font-family:'IBM Plex Mono', monospace; font-size:15px; color:var(--tan); }
 
-/* ---------- CONTENT LAYOUT ---------- */
 .content{
   display:flex;
   flex:1;
@@ -146,7 +145,7 @@ input{ font-family: inherit; }
 
 .mobile-toggle{ display:none; }
 
-/* ---------- SIDEBAR ---------- */
+/* left panel controls */
 .sidebar{
   width: 272px;
   flex-shrink:0;
@@ -317,7 +316,6 @@ input{ font-family: inherit; }
 }
 .legend-grid b{ color: var(--tan); margin-right: 4px; }
 
-/* ---------- MAIN LIST ---------- */
 .main{
   flex:1;
   min-width:0;
@@ -491,12 +489,11 @@ input{ font-family: inherit; }
 }
 .toast.show{ opacity:1; transform: translateX(-50%) translateY(0); }
 
-/* ---------- SCROLLBARS ---------- */
 .sidebar::-webkit-scrollbar, .main::-webkit-scrollbar{ width:9px; }
 .sidebar::-webkit-scrollbar-track, .main::-webkit-scrollbar-track{ background: var(--black); }
 .sidebar::-webkit-scrollbar-thumb, .main::-webkit-scrollbar-thumb{ background: var(--panel3); border-radius:6px; }
 
-/* ---------- RESPONSIVE ---------- */
+/* mobile - collapse sidebar behind a toggle, trim the table down */
 @media (max-width: 860px){
   .content{ flex-direction:column; overflow-y:auto; }
   .mobile-toggle{
