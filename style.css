@@ -330,7 +330,7 @@ input{ font-family: inherit; }
   top:0;
   z-index: 5;
   display:grid;
-  grid-template-columns: 46px 8px 58px 1fr 96px 160px 40px;
+  grid-template-columns: 46px 8px 64px 1fr 104px 160px 220px 40px; /*column header width*/
   gap: 12px;
   align-items:center;
   padding: 12px 18px;
@@ -345,7 +345,7 @@ input{ font-family: inherit; }
 
 .row{
   display:grid;
-  grid-template-columns: 46px 8px 58px 1fr 96px 160px 40px;
+  grid-template-columns: 46px 8px 64px 1fr 104px 160px 220px 40px; /*column width*/
   gap: 12px;
   align-items:center;
   padding: 10px 18px;
@@ -429,7 +429,7 @@ input{ font-family: inherit; }
   vertical-align: 1px;
 }
 
-.row .ep-date, .row .ep-stardate{
+.row .ep-date, .row .ep-stardate, .row .ep-year{
   font-family:'IBM Plex Mono', monospace;
   font-size: 11.5px;
   color: var(--text-dim);
@@ -522,8 +522,8 @@ input{ font-family: inherit; }
   .row, .list-head{
     grid-template-columns: 30px 6px 44px 1fr 34px;
   }
-  .ep-date, .ep-stardate{ display:none; }
-  .list-head span:nth-child(5), .list-head span:nth-child(6){ display:none; }
+  .ep-date, .ep-stardate, .ep-year{ display:none; }
+  .list-head span:nth-child(5), .list-head span:nth-child(6), .list-head span:nth-child(7){ display:none; }
 }
 
 @media (prefers-reduced-motion: reduce){
