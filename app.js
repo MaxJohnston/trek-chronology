@@ -171,7 +171,7 @@
       '<div class="conduit" style="color:' + show.color + ';background:' + (watched ? show.color : 'var(--panel3)') + '"></div>' +
       '<div class="show-pill" style="background:' + show.color + '" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || d.s) + '</div>' +
       '<div class="ep-info">' +
-        '<div class="ep-title">' + escapeHtml(d.t) + canonLabel(d.k) + '</div>' +
+        '<div class="ep-title">' + (d.url ? '<a class="ep-link" href="' + escapeHtml(d.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(d.t) + '</a>' : escapeHtml(d.t)) + canonLabel(d.k) + '</div>' +
         '<div class="ep-sub">' + escapeHtml(d.e || '—') + ' · ' + escapeHtml(d.dist || '') + '</div>' +
         noteHtml +
       '</div>' +
