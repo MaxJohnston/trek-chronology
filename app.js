@@ -163,7 +163,7 @@
   function rowHtml(d){
     var show = SHOWS[d.s] || {name:d.s, color:'#888'};
     var watched = state.watched.has(d.i);
-    var orderVal = state.order === 'c' ? d.c : d.a;
+    var orderVal = d[state.order];
     var noteHtml = d.n ? '<div class="ep-note">' + escapeHtml(d.n) + '</div>' : '';
 
     return '<div class="row' + (watched ? ' is-watched' : '') + '" data-id="' + d.i + '">' +
