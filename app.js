@@ -360,6 +360,17 @@
   updateStardate();
   setInterval(updateStardate, 60000);
 
+  // mobile: fade the "swipe for more" hint after the first horizontal scroll
+  var mainEl = document.getElementById('main');
+  var scrollHint = document.getElementById('scrollHint');
+  if (mainEl && scrollHint){
+    mainEl.addEventListener('scroll', function(){
+      if (mainEl.scrollLeft > 8){
+        scrollHint.classList.add('faded');
+      }
+    }, { passive:true });
+  }
+
   loadStorage();
 
   }
