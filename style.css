@@ -588,7 +588,7 @@ input{ font-family: inherit; }
   .list-head, .row{
     grid-template-columns: 34px 16px 6px 48px 220px 88px 118px 210px 1fr; /* mobile header spacing */
     gap: 10px;
-    min-width: 700px;
+    min-width: 740px;
     padding: 12px 14px;
   }
 
