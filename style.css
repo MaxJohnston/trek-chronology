@@ -528,59 +528,13 @@ input{ font-family: inherit; }
     transition: max-height 0.25s ease;
   }
   .sidebar.open{ max-height: 2000px; margin-top:8px; }
-  .main{
-    height: 70vh;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
+  .main{ height: 70vh; }
   .readout-block{ display:none; }
-
-  /* Keep the full column set on mobile instead of hiding columns —
-     the row becomes wider than the viewport, so .main (explicitly
-     overflow-x:auto above) scrolls horizontally. The leading
-     id/indicator/series columns and the trailing checkbox stay
-     pinned via position:sticky while Title/Air Date/Stardate/Year
-     scroll underneath. */
   .row, .list-head{
-    grid-template-columns: 46px 8px 64px 200px 104px 160px 200px 40px;
+    grid-template-columns: 30px 6px 44px 1fr 34px;
   }
-
-  .row .order-num, .list-head span:nth-child(1){
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    background: var(--panel);
-  }
-  .list-head span:nth-child(1){ background: var(--panel2); }
-
-  .row .conduit, .list-head span:nth-child(2){
-    position: sticky;
-    left: 58px;
-    z-index: 2;
-  }
-  .list-head span:nth-child(2){ background: var(--panel2); }
-
-  .row .show-pill, .list-head span:nth-child(3){
-    position: sticky;
-    left: 78px;
-    z-index: 2;
-    background: var(--panel);
-    /* marks the split: everything before this stays put, everything after scrolls */
-    box-shadow: 4px 0 6px -2px rgba(0,0,0,0.5);
-  }
-  .list-head span:nth-child(3){ background: var(--panel2); }
-
-  .row .watch-btn, .list-head span:nth-child(8){
-    position: sticky;
-    right: 0;
-    z-index: 2;
-    /* solid backdrop so scrolling content can't peek through around the button */
-    box-shadow: 0 0 0 7px var(--panel), -6px 0 6px -2px rgba(0,0,0,0.5);
-  }
-  .list-head span:nth-child(8){
-    background: var(--panel2);
-    box-shadow: -6px 0 6px -2px rgba(0,0,0,0.5);
-  }
+  .ep-date, .ep-stardate, .ep-year{ display:none; }
+  .list-head span:nth-child(5), .list-head span:nth-child(6), .list-head span:nth-child(7){ display:none; }
 }
 
 @media (prefers-reduced-motion: reduce){
