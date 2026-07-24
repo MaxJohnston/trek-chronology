@@ -147,7 +147,7 @@
   var listHeadEl = document.getElementById('listHead');
   var emptyEl = document.getElementById('emptyState');
 
-  listHeadEl.innerHTML = '<span>#</span><span></span><span>Series</span><span>Title</span><span>Air Date</span><span>Stardate</span><span>Gregorian Date</span><span></span>';
+  listHeadEl.innerHTML = '<span></span><span>#</span><span></span><span>Series</span><span>Title</span><span>Air Date</span><span>Stardate</span><span>Gregorian Date</span>';
 
   function canonLabel(k){
     if (k === 'Y' || k === 'YM') return '';
@@ -167,6 +167,7 @@
     var noteHtml = d.n ? '<div class="ep-note">' + escapeHtml(d.n) + '</div>' : '';
 
     return '<div class="row' + (watched ? ' is-watched' : '') + '" data-id="' + d.i + '">' +
+	  '<button class="watch-btn' + (watched ? ' checked' : '') + '" aria-label="' + (watched ? 'Mark unwatched' : 'Mark watched') + '" data-id="' + d.i + '"></button>' +
       '<div class="order-num">' + (orderVal !== null ? orderVal : '—') + '</div>' +
       '<div class="conduit" style="color:' + show.color + ';background:' + (watched ? show.color : 'var(--panel3)') + '"></div>' +
       '<div class="show-pill" style="background:' + show.color + '" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || d.s) + '</div>' +
@@ -178,7 +179,7 @@
       '<div class="ep-date">' + escapeHtml(d.d || '—') + '</div>' +
       '<div class="ep-stardate">' + escapeHtml(d.sd || '—') + '</div>' +
       '<div class="ep-year">' + escapeHtml(d.y || '—') + '</div>' +
-      '<button class="watch-btn' + (watched ? ' checked' : '') + '" aria-label="' + (watched ? 'Mark unwatched' : 'Mark watched') + '" data-id="' + d.i + '"></button>' +
+      
     '</div>';
   }
 
