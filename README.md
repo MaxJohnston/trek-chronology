@@ -1,4 +1,6 @@
 # trek-chronology
-A tool for watching the Star Trek franchise by chronological or release order. Filterable by series.
+Select between 3 viewing sequences: Chronological, Release, and Time Travel
+Filterable by series.
+Progress saved in browser cache.
 
 View on web: https://maxjohnston.github.io/trek-chronology/
