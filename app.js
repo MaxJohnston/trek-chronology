@@ -125,7 +125,9 @@
     if (state.canon === 'noncanon' && CANON_CODES.canon.includes(d.k)) return false;
     if (state.search){
       var q = state.search.toLowerCase();
-      if (!d.t.toLowerCase().includes(q) && !d.e.toLowerCase().includes(q)) return false;
+      var title = String(d.t || '').toLowerCase();
+      var ep = String(d.e || '').toLowerCase();
+      if (!title.includes(q) && !ep.includes(q)) return false;
     }
     return true;
   }
