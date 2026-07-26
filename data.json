@@ -4004,7 +4004,7 @@
     "s": "TOS",
     "e": "3x23",
     "t": "All Our Yesterdays",
-    "c": 251,
+    "c": 252,
     "a": 78,
     "k": "Y",
     "d": "1969-03-14",
@@ -4013,14 +4013,14 @@
     "y": 2269,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/All_Our_Yesterdays_(episode)",
-    "tt": 275
+    "tt": 276
   },
   {
     "i": 251,
     "s": "TOS",
     "e": "3x24",
     "t": "Turnabout Intruder",
-    "c": 252,
+    "c": 251,
     "a": 79,
     "k": "Y",
     "d": "1969-06-03",
@@ -4029,7 +4029,7 @@
     "y": 2269,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Turnabout_Intruder_(episode)",
-    "tt": 276
+    "tt": 275
   },
   {
     "i": 252,
