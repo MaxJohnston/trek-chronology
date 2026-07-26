@@ -148,7 +148,7 @@
     "s": "ENT",
     "e": "1x11",
     "t": "Cold Front",
-    "c": 10,
+    "c": 11,
     "a": 638,
     "k": "Y",
     "d": "2001-11-28",
@@ -157,14 +157,14 @@
     "y": "2151-09-09",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Cold_Front_(episode)",
-    "tt": 36
+    "tt": 37
   },
   {
     "i": 10,
     "s": "ENT",
     "e": "1x12",
     "t": "Silent Enemy",
-    "c": 11,
+    "c": 10,
     "a": 639,
     "k": "Y",
     "d": "2002-01-16",
@@ -173,7 +173,7 @@
     "y": "2151-09-01",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Silent_Enemy_(episode)",
-    "tt": 37
+    "tt": 36
   },
   {
     "i": 11,
