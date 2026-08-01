@@ -135,6 +135,23 @@
   function getFilteredSorted(){
     var out = DATA.filter(passesFilters);
     var field = state.order;
+
+    // Some episodes revisit two different points in the timeline (e.g. a
+    // time-travel story shown once at its "home" position and again where
+    // the story it visits sits). Only in the Time Travel view, splice in a
+    // second appearance for any entry that defines tt2 — a secondary sort
+    // position. This never touches DATA itself, so totals/per-show counts
+    // stay based on real, unique episodes.
+    if (field === 'tt'){
+      var reappearances = DATA
+        .filter(function(d){ return d.tt2 != null && passesFilters(d); })
+        .map(function(d){
+          var dup = Object.assign({}, d, { tt: d.tt2, _dup: true });
+          return dup;
+        });
+      out = out.concat(reappearances);
+    }
+
     out.sort(function(a,b){
       var av = a[field], bv = b[field];
       if (av === null && bv === null) return a.i - b.i;
