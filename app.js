@@ -77,7 +77,7 @@
         try{
           var s = JSON.parse(settingsRaw);
           if (s.order) state.order = s.order;
-          if (s.canon) state.canon = s.canon;
+          if (s.canon === 'canon') state.canon = 'canon';
           if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
         }catch(e){}
       }
@@ -136,7 +136,6 @@
   function passesFilters(d){
     if (!state.shows.has(d.s)) return false;
     if (state.canon === 'canon' && CANON_CODES.noncanon.includes(d.k)) return false;
-    if (state.canon === 'noncanon' && CANON_CODES.canon.includes(d.k)) return false;
     if (state.search){
       var q = state.search.toLowerCase();
       var title = String(d.t || '').toLowerCase();
