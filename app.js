@@ -45,12 +45,32 @@
 
   var ROUTES = { c:'chronological', a:'release', tt:'time-travel' };
 
+  // `from` is the first year that belongs to an era; release eras go by air date
+  var CENTURIES = [
+    {key:'22c',  label:'22nd Century', from:2100},
+    {key:'23c',  label:'23rd Century', from:2200},
+    {key:'2300', label:'2300 – 2379',  from:2300},
+    {key:'2380', label:'2380 – 2402',  from:2380},
+    {key:'3000', label:'3000 – ????',  from:3000}
+  ];
+  var ERAS = {
+    c: CENTURIES,
+    tt: [{key:'pre', label:'Before 2100', from:-Infinity}].concat(CENTURIES),
+    a: [
+      {key:'desilu',    label:'Desilu Era',         hint:'1966 – 1968', from:-Infinity},
+      {key:'paramount', label:'Paramount Era',      hint:'1968 – 2005', from:1968.5},
+      {key:'badrobot',  label:'Bad Robot Era',      hint:'2009 – 2016', from:2006},
+      {key:'hideout',   label:'Secret Hideout Era', hint:'2017 – now',  from:2017}
+    ]
+  };
+
   var state = {
     order: 'c',
     canon: 'all',
     search: '',
     shows: new Set(Object.keys(SHOWS)),
-    watched: new Set()
+    watched: new Set(),
+    collapsed: { c: new Set(), a: new Set(), tt: new Set() }
   };
 
   var WATCHED_KEY = 'trek-chronology:watched';
@@ -79,6 +99,9 @@
           if (s.order) state.order = s.order;
           if (s.canon === 'canon') state.canon = 'canon';
           if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
+          if (s.collapsed) Object.keys(state.collapsed).forEach(function(k){
+            if (Array.isArray(s.collapsed[k])) state.collapsed[k] = new Set(s.collapsed[k]);
+          });
         }catch(e){}
       }
     }
@@ -101,7 +124,12 @@
     localStorage.setItem(SETTINGS_KEY, JSON.stringify({
       order: state.order,
       canon: state.canon,
-      shows: [...state.shows]
+      shows: [...state.shows],
+      collapsed: {
+        c: [...state.collapsed.c],
+        a: [...state.collapsed.a],
+        tt: [...state.collapsed.tt]
+      }
     }));
   }
 
@@ -128,6 +156,66 @@
     document.querySelectorAll('#canonToggle .seg-btn').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.canon === state.canon);
     });
+  }
+
+  // Earth dates are messy ("2293 (2260s Flashback)", "4200s", blank), so eras are cut
+  // by list position: an era starts where its years take over for a few entries in a
+  // row, which keeps stragglers like a single flashback from splitting a section.
+  function leadYear(d){
+    var m = String(d.y == null ? '' : d.y).match(/\d{3,4}/);
+    return m ? Number(m[0]) : null;
+  }
+  // time travel order follows the destination, usually the year in parentheses
+  function travelYear(d){
+    var s = String(d.y == null ? '' : d.y);
+    var paren = s.match(/\(([^)]*\d[^)]*)\)/);
+    var m = (paren ? paren[1] : s).match(/(\d{1,4})\s*(mya|bce?)?/i);
+    if (!m) return null;
+    return m[2] ? -Number(m[1]) : Number(m[1]);
+  }
+  function airYear(d){
+    var m = String(d.d || '').match(/^(\d{4})-(\d{2})/);
+    return m ? Number(m[1]) + (m[2] - 1) / 12 : null;
+  }
+  var ERA_YEAR = { c: leadYear, tt: travelYear, a: airYear };
+
+  var eraStarts = {};
+  Object.keys(ERAS).forEach(function(field){
+    var eras = ERAS[field];
+    var slots = DATA.filter(function(d){ return d[field] != null; }).map(function(d){ return {d:d, pos:d[field]}; });
+    if (field === 'tt'){
+      DATA.forEach(function(d){ if (d.tt2 != null) slots.push({d:d, pos:d.tt2}); });
+    }
+    slots.sort(function(a,b){ return a.pos - b.pos; });
+
+    var idx = slots.map(function(s){
+      var y = ERA_YEAR[field](s.d);
+      if (y == null) return null;
+      var k = 0;
+      eras.forEach(function(e, i){ if (y >= e.from) k = i; });
+      return k;
+    });
+
+    var starts = [slots.length ? slots[0].pos : 0];
+    var cur = 0;
+    idx.forEach(function(k, i){
+      if (k == null || k <= cur) return;
+      var run = [k];
+      for (var j = i + 1; j < idx.length && run.length < 4; j++){
+        if (idx[j] != null) run.push(idx[j]);
+      }
+      var to = Math.min.apply(null, run);
+      for (; cur < to; cur++) starts[cur + 1] = slots[i].pos;
+    });
+    eraStarts[field] = starts;
+  });
+
+  function eraIndex(field, pos){
+    var starts = eraStarts[field];
+    for (var i = starts.length - 1; i > 0; i--){
+      if (starts[i] != null && pos >= starts[i]) return i;
+    }
+    return 0;
   }
 
   var counts = {};
@@ -184,6 +272,12 @@
   var listHeadEl = document.getElementById('listHead');
   var emptyEl = document.getElementById('emptyState');
   var mainEl = document.getElementById('main');
+  var listTopEl = document.querySelector('.list-top');
+
+  // era headers stick just under the toolbar, whose height changes with layout
+  new ResizeObserver(function(){
+    mainEl.style.setProperty('--list-top-h', listTopEl.offsetHeight + 'px');
+  }).observe(listTopEl);
 
   listHeadEl.innerHTML = '<span></span><span class="num-head">#</span><span>Series</span><span>Title</span><span>Air Date</span><span>Stardate</span><span>Gregorian Date</span>';
 
@@ -250,12 +344,57 @@
       emptyEl.hidden = false;
     } else {
       emptyEl.hidden = true;
-      listEl.innerHTML = currentList.map(function(d){ return rowHtml(d, next && next.i); }).join('');
+      listEl.innerHTML = groupByEra(currentList).map(function(g){
+        var open = !state.collapsed[state.order].has(g.era.key);
+        return eraHeadHtml(g, open) + (open ? g.rows.map(function(d){ return rowHtml(d, next && next.i); }).join('') : '');
+      }).join('');
     }
 
     renderChips();
     renderProgress();
     renderMeta(next);
+  }
+
+  function groupByEra(list){
+    var groups = [];
+    var field = state.order;
+    list.forEach(function(d){
+      var era = ERAS[field][d[field] == null ? ERAS[field].length - 1 : eraIndex(field, d[field])];
+      var last = groups[groups.length - 1];
+      if (last && last.era === era) last.rows.push(d);
+      else groups.push({era:era, rows:[d]});
+    });
+    return groups;
+  }
+
+  function eraHeadHtml(g, open){
+    var seen = g.rows.filter(function(d){ return state.watched.has(d.i); }).length;
+    var total = g.rows.length;
+    return '<button class="era-head' + (seen === total ? ' is-done' : '') + '" data-era="' + g.era.key + '" aria-expanded="' + open + '">' +
+      '<span class="era-chev" aria-hidden="true"></span>' +
+      '<span class="era-name">' + escapeHtml(g.era.label) + '</span>' +
+      (g.era.hint ? '<span class="era-hint">' + escapeHtml(g.era.hint) + '</span>' : '') +
+      '<span class="era-count">' + seen + ' / ' + total + '</span>' +
+      '<span class="era-bar"><i style="width:' + (seen / total * 100) + '%"></i></span>' +
+    '</button>';
+  }
+
+  function eraKeyOf(d){
+    return ERAS[state.order][eraIndex(state.order, d[state.order])].key;
+  }
+
+  function toggleEra(key){
+    var set = state.collapsed[state.order];
+    var head = listEl.querySelector('.era-head[data-era="' + key + '"]');
+    // if the header is pinned at the top, keep it there instead of leaving the reader mid-list
+    var pinned = head && head.getBoundingClientRect().top <= listTopEl.getBoundingClientRect().bottom + 1;
+    set.has(key) ? set.delete(key) : set.add(key);
+    saveSettings();
+    render();
+    if (pinned){
+      head = listEl.querySelector('.era-head[data-era="' + key + '"]');
+      mainEl.scrollTop = head.offsetTop - listTopEl.offsetHeight;
+    }
   }
 
   function renderMeta(next){
@@ -264,6 +403,13 @@
       ? 'Showing ' + unique + ' of ' + DATA.length
       : DATA.length + ' entries';
     document.getElementById('clearFilters').hidden = !isFiltered();
+
+    var keys = groupByEra(currentList).map(function(g){ return g.era.key; });
+    var allClosed = keys.length && keys.every(function(k){ return state.collapsed[state.order].has(k); });
+    var toggleAll = document.getElementById('toggleEras');
+    toggleAll.hidden = !keys.length;
+    toggleAll.textContent = allClosed ? 'Expand all' : 'Collapse all';
+    toggleAll.dataset.action = allClosed ? 'expand' : 'collapse';
 
     var n = activeFilterCount();
     var badge = document.getElementById('filterBadge');
@@ -330,6 +476,8 @@
   }
 
   listEl.addEventListener('click', function(e){
+    var head = e.target.closest('.era-head');
+    if (head){ toggleEra(head.dataset.era); return; }
     var btn = e.target.closest('.watch-btn');
     if (!btn) return;
     var id = Number(btn.dataset.id);
@@ -369,6 +517,15 @@
       state.search = val.trim();
       render();
     }, 120); // small debounce so we're not re-rendering on every keystroke
+  });
+
+  document.getElementById('toggleEras').addEventListener('click', function(e){
+    var set = state.collapsed[state.order];
+    if (e.target.dataset.action === 'expand') set.clear();
+    else ERAS[state.order].forEach(function(era){ set.add(era.key); });
+    saveSettings();
+    render();
+    mainEl.scrollTop = 0;
   });
 
   document.getElementById('selectAllShows').addEventListener('click', function(){
@@ -450,6 +607,12 @@
   function jumpToNext(){
     var next = nextUnwatched();
     if (!next){ showToast('All caught up in this view!'); return; }
+
+    var era = eraKeyOf(next);
+    if (state.collapsed[state.order].delete(era)){
+      saveSettings();
+      render();
+    }
 
     var el = listEl.querySelector('.row[data-id="' + next.i + '"]');
     if (!el) return;
