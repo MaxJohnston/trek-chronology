@@ -187,9 +187,11 @@
 
   listHeadEl.innerHTML = '<span></span><span class="num-head">#</span><span>Series</span><span>Title</span><span>Air Date</span><span>Stardate</span><span>Gregorian Date</span>';
 
+  var CANON_NAMES = { 'Y?':'Probably Canon', M:'Maybe', N:'Non-canon', B:'Branch Timeline', R:'Retconned' };
+
   function canonLabel(k){
     if (!k || k === 'Y' || k === 'YM') return '';
-    return '<span class="canon-tag" title="Canon status: ' + escapeHtml(k) + '">' + escapeHtml(k) + '</span>';
+    return '<span class="canon-tag" title="Canon status: ' + escapeHtml(CANON_NAMES[k] || k) + '">' + escapeHtml(k) + '</span>';
   }
 
   function escapeHtml(str){
