@@ -20,12 +20,13 @@
   var SHOWS = {
     TOS:  {name:"The Original Series",   color:"#FF9F1C"},
     TAS:  {name:"The Animated Series",   color:"#FFC145"},
-    KEL:  {name:"Kelvin Timeline Films", color:"#F4585F"},
     TNG:  {name:"The Next Generation",   color:"#6C8EFF"},
     DS9:  {name:"Deep Space Nine",       color:"#B18CFF"},
     VOY:  {name:"Voyager",               color:"#3DCCC7"},
     ENT:  {name:"Enterprise",            color:"#E8734A"},
+    KEL:  {name:"Kelvin Timeline Films", color:"#F4585F"},
     DSC:  {name:"Discovery",             color:"#C15CFF"},
+    "Short Trek":       {name:"Short Treks",        color:"#FFB86B", abbr:"ST"},
     PIC:  {name:"Picard",                color:"#4FA3E3"},
     SNW:  {name:"Strange New Worlds",    color:"#FFD23F"},
     LD:   {name:"Lower Decks",           color:"#7ED957"},
@@ -33,15 +34,16 @@
     KHA:  {name:"Khan (Audio Drama)",    color:"#D65DB1"},
     SCO:  {name:"Scouts",                color:"#FF7BAC"},
     SA:   {name:"Starfleet Academy",     color:"#00C2CB"},
-    "Short Trek":       {name:"Short Treks",        color:"#FFB86B", abbr:"ST"},
     "Very Short Treks": {name:"Very Short Treks",   color:"#FFA36B", abbr:"VST"},
-    "Short":            {name:"Fan Shorts",         color:"#B0B0B0", abbr:"OTOY"},
-    "Long Trek":        {name:"Long-Form / Feature",color:"#9A9A9A", abbr:"LT"},
-    Comic: {name:"Comics & Tie-ins", color:"#D9A441"}
+    "Short":            {name:"OTOY Shorts",        color:"#B0B0B0", abbr:"OTOY"},
+    "Long Trek":        {name:"Long Treks",color:"#9A9A9A", abbr:"LT"},
+    Comic: {name:"Comics", color:"#D9A441"}
   };
 
   // canon codes from the CSV, bucketed for the filter toggle
   var CANON_CODES = { canon: ["Y","YM","Y?","B"], noncanon: ["N","?","M","R"] };
+
+  var ROUTES = { c:'chronological', a:'release', tt:'time-travel' };
 
   var state = {
     order: 'c',
@@ -63,23 +65,27 @@
   }
 
   function loadStorage(){
-    if (!storageWorks){ render(); return; }
+    if (storageWorks){
+      var watchedRaw = localStorage.getItem(WATCHED_KEY);
+      if (watchedRaw){
+        try{ state.watched = new Set(JSON.parse(watchedRaw)); }
+        catch(e){ /* corrupt data, just start fresh */ }
+      }
 
-    var watchedRaw = localStorage.getItem(WATCHED_KEY);
-    if (watchedRaw){
-      try{ state.watched = new Set(JSON.parse(watchedRaw)); }
-      catch(e){ /* corrupt data, just start fresh */ }
+      var settingsRaw = localStorage.getItem(SETTINGS_KEY);
+      if (settingsRaw){
+        try{
+          var s = JSON.parse(settingsRaw);
+          if (s.order) state.order = s.order;
+          if (s.canon) state.canon = s.canon;
+          if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
+        }catch(e){}
+      }
     }
 
-    var settingsRaw = localStorage.getItem(SETTINGS_KEY);
-    if (settingsRaw){
-      try{
-        var s = JSON.parse(settingsRaw);
-        if (s.order) state.order = s.order;
-        if (s.canon) state.canon = s.canon;
-        if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
-      }catch(e){}
-    }
+    // a shared link like #/time-travel wins over whatever was saved
+    var fromHash = orderFromHash();
+    if (fromHash) state.order = fromHash;
 
     syncControlsToState();
     render();
@@ -99,25 +105,33 @@
     }));
   }
 
+  function orderFromHash(){
+    var slug = location.hash.replace(/^#\/?/, '');
+    return Object.keys(ROUTES).find(function(k){ return ROUTES[k] === slug; });
+  }
+
+  function setOrder(order){
+    if (!ROUTES[order]) return;
+    state.order = order;
+    history.replaceState(null, '', '#/' + ROUTES[order]);
+    syncControlsToState();
+    saveSettings();
+    render();
+    mainEl.scrollTop = 0;
+  }
+
   function syncControlsToState(){
-    document.querySelectorAll('#orderToggle .seg-btn').forEach(function(b){
-      var on = b.dataset.order === state.order;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-selected', on);
+    document.body.dataset.order = state.order;
+    document.querySelectorAll('.order-btn').forEach(function(b){
+      b.setAttribute('aria-pressed', b.dataset.order === state.order);
     });
     document.querySelectorAll('#canonToggle .seg-btn').forEach(function(b){
-      var on = b.dataset.canon === state.canon;
-      b.classList.toggle('active', on);
-      b.setAttribute('aria-selected', on);
+      b.setAttribute('aria-pressed', b.dataset.canon === state.canon);
     });
   }
 
-  function showCounts(){
-    var counts = {};
-    DATA.forEach(function(d){ counts[d.s] = (counts[d.s]||0) + 1; });
-    return counts;
-  }
-  var counts = showCounts();
+  var counts = {};
+  DATA.forEach(function(d){ counts[d.s] = (counts[d.s]||0) + 1; });
 
   function passesFilters(d){
     if (!state.shows.has(d.s)) return false;
@@ -136,41 +150,47 @@
     var out = DATA.filter(passesFilters);
     var field = state.order;
 
-    // Some episodes revisit two different points in the timeline (e.g. a
-    // time-travel story shown once at its "home" position and again where
-    // the story it visits sits). Only in the Time Travel view, splice in a
-    // second appearance for any entry that defines tt2 — a secondary sort
-    // position. This never touches DATA itself, so totals/per-show counts
-    // stay based on real, unique episodes.
+    // entries revisited during the time-travel run get a second slot via tt2;
+    // the copy is render-only so totals and per-show tallies stay honest
     if (field === 'tt'){
-      var reappearances = DATA
-        .filter(function(d){ return d.tt2 != null && passesFilters(d); })
-        .map(function(d){
-          var dup = Object.assign({}, d, { tt: d.tt2, _dup: true });
-          return dup;
-        });
-      out = out.concat(reappearances);
+      out.filter(function(d){ return d.tt2 != null; }).forEach(function(d){
+        out.push(Object.assign({}, d, { tt: d.tt2, repeat: true }));
+      });
     }
 
     out.sort(function(a,b){
       var av = a[field], bv = b[field];
-      if (av === null && bv === null) return a.i - b.i;
-      if (av === null) return 1;
-      if (bv === null) return -1;
+      if (av == null && bv == null) return a.i - b.i;
+      if (av == null) return 1;
+      if (bv == null) return -1;
       return av - bv;
     });
     return out;
   }
 
+  function isFiltered(){
+    return state.canon !== 'all' || !!state.search || visibleShowCodes().some(function(c){ return !state.shows.has(c); });
+  }
+
+  function activeFilterCount(){
+    var hidden = visibleShowCodes().filter(function(c){ return !state.shows.has(c); }).length;
+    return (hidden ? 1 : 0) + (state.canon !== 'all' ? 1 : 0) + (state.search ? 1 : 0);
+  }
+
+  function visibleShowCodes(){
+    return Object.keys(SHOWS).filter(function(c){ return counts[c]; });
+  }
+
   var listEl = document.getElementById('list');
   var listHeadEl = document.getElementById('listHead');
   var emptyEl = document.getElementById('emptyState');
+  var mainEl = document.getElementById('main');
 
-  listHeadEl.innerHTML = '<span></span><span>#</span><span></span><span>Series</span><span>Title</span><span>Air Date</span><span>Stardate</span><span>Gregorian Date</span>';
+  listHeadEl.innerHTML = '<span></span><span class="num-head">#</span><span>Series</span><span>Title</span><span>Air Date</span><span>Stardate</span><span>Gregorian Date</span>';
 
   function canonLabel(k){
-    if (k === 'Y' || k === 'YM') return '';
-    return '<span class="canon-tag" title="Canon status: ' + k + '">' + k + '</span>';
+    if (!k || k === 'Y' || k === 'YM') return '';
+    return '<span class="canon-tag" title="Canon status: ' + escapeHtml(k) + '">' + escapeHtml(k) + '</span>';
   }
 
   function escapeHtml(str){
@@ -179,95 +199,132 @@
     });
   }
 
-  function rowHtml(d){
+  function metaCell(cls, label, val){
+    var text = val == null || val === '' ? '—' : escapeHtml(val);
+    return '<span class="' + cls + '" data-label="' + label + '" title="' + text + '">' + text + '</span>';
+  }
+
+  function rowHtml(d, nextId){
     var show = SHOWS[d.s] || {name:d.s, color:'#888'};
     var watched = state.watched.has(d.i);
     var orderVal = d[state.order];
-    var noteHtml = d.n ? '<div class="ep-note">' + escapeHtml(d.n) + '</div>' : '';
+    var title = escapeHtml(d.t == null ? '' : d.t);
+    var sub = [d.e, d.dist].filter(Boolean).map(escapeHtml).join(' · ') || '—';
+    var cls = 'row' + (watched ? ' is-watched' : '') + (!d.repeat && d.i === nextId ? ' is-next' : '');
 
-    return '<div class="row' + (watched ? ' is-watched' : '') + '" data-id="' + d.i + '">' +
-	  '<button class="watch-btn' + (watched ? ' checked' : '') + '" aria-label="' + (watched ? 'Mark unwatched' : 'Mark watched') + '" data-id="' + d.i + '"></button>' +
-      '<div class="order-num">' + (orderVal !== null ? orderVal : '—') + '</div>' +
-      '<div class="conduit" style="color:' + show.color + ';background:' + (watched ? show.color : 'var(--panel3)') + '"></div>' +
-      '<div class="show-pill" style="background:' + show.color + '" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || d.s) + '</div>' +
+    return '<div class="' + cls + '" data-id="' + d.i + '" style="--show:' + show.color + '">' +
+      '<button class="watch-btn" aria-pressed="' + watched + '" aria-label="' + (watched ? 'Mark unwatched' : 'Mark watched') + '" data-id="' + d.i + '"></button>' +
+      '<div class="order-num">' + (orderVal != null ? orderVal : '—') + '</div>' +
+      '<div class="show-pill" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || d.s) + '</div>' +
       '<div class="ep-info">' +
-        '<div class="ep-title">' + (d.url ? '<a class="ep-link" href="' + escapeHtml(d.url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(d.t) + '</a>' : escapeHtml(d.t)) + canonLabel(d.k) + '</div>' +
-        '<div class="ep-sub">' + escapeHtml(d.e || '—') + ' · ' + escapeHtml(d.dist || '') + '</div>' +
-        noteHtml +
+        '<div class="ep-title">' +
+          (d.url ? '<a class="ep-link" href="' + escapeHtml(d.url) + '" target="_blank" rel="noopener noreferrer">' + title + '</a>' : title) +
+          canonLabel(d.k) +
+          (d.repeat ? '<span class="tag tag-repeat" title="Appears again at this point in the timeline">Revisit</span>' : '') +
+          '<span class="tag tag-next">Up next</span>' +
+        '</div>' +
+        '<div class="ep-sub">' + sub + '</div>' +
+        (d.n ? '<div class="ep-note">' + escapeHtml(d.n) + '</div>' : '') +
       '</div>' +
-      '<div class="ep-date">' + escapeHtml(d.d || '—') + '</div>' +
-      '<div class="ep-stardate">' + escapeHtml(d.sd || '—') + '</div>' +
-      '<div class="ep-year">' + escapeHtml(d.y || '—') + '</div>' +
-      
+      '<div class="ep-meta">' +
+        metaCell('ep-date', 'Aired', d.d) +
+        metaCell('ep-stardate', 'Stardate', d.sd) +
+        metaCell('ep-year', 'Earth date', d.y) +
+      '</div>' +
     '</div>';
   }
 
   var currentList = [];
 
+  function nextUnwatched(){
+    return currentList.find(function(d){ return !state.watched.has(d.i); });
+  }
+
   function render(){
     currentList = getFilteredSorted();
+    var next = nextUnwatched();
 
     if (!currentList.length){
       listEl.innerHTML = '';
       emptyEl.hidden = false;
     } else {
       emptyEl.hidden = true;
-      listEl.innerHTML = currentList.map(rowHtml).join('');
+      listEl.innerHTML = currentList.map(function(d){ return rowHtml(d, next && next.i); }).join('');
     }
 
     renderChips();
     renderProgress();
+    renderMeta(next);
+  }
+
+  function renderMeta(next){
+    var unique = new Set(currentList.map(function(d){ return d.i; })).size;
+    document.getElementById('resultCount').textContent = isFiltered()
+      ? 'Showing ' + unique + ' of ' + DATA.length
+      : DATA.length + ' entries';
+    document.getElementById('clearFilters').hidden = !isFiltered();
+
+    var n = activeFilterCount();
+    var badge = document.getElementById('filterBadge');
+    badge.hidden = !n;
+    badge.textContent = n;
+
+    var nextBtn = document.getElementById('jumpNext');
+    nextBtn.classList.toggle('done', !next);
+    document.getElementById('nextTitle').textContent = next
+      ? (SHOWS[next.s] ? (SHOWS[next.s].abbr || next.s) : next.s) + ' · ' + String(next.t == null ? '' : next.t)
+      : 'All caught up';
   }
 
   function renderProgress(){
     var total = DATA.length;
-    var watchedCount = state.watched.size;
+    var watchedCount = DATA.filter(function(d){ return state.watched.has(d.i); }).length;
     var pct = total ? Math.round((watchedCount/total)*100) : 0;
+    var circumference = 2 * Math.PI * 19;
     document.getElementById('statProgress').textContent = watchedCount + ' / ' + total;
-    document.getElementById('conduitFill').style.width = pct + '%';
-    document.getElementById('conduitPct').textContent = pct + '%';
+    document.getElementById('ringPct').textContent = pct + '%';
+    var ring = document.getElementById('ringFill');
+    ring.style.strokeDasharray = circumference;
+    ring.style.strokeDashoffset = circumference * (1 - pct/100);
+  }
+
+  function seriesTally(code){
+    return DATA.filter(function(d){ return d.s === code && state.watched.has(d.i); }).length;
   }
 
   function renderChips(){
     var container = document.getElementById('showChips');
 
-    // build once, then just flip classes/counts on subsequent renders
-    if (container.dataset.built){
-      updateChipStates();
-      return;
+    // build once, then just flip states/counts on subsequent renders
+    if (!container.dataset.built){
+      container.innerHTML = visibleShowCodes().map(function(code){
+        var show = SHOWS[code];
+        return '<button class="series-item" data-show="' + escapeHtml(code) + '" style="--show:' + show.color + '" title="' + escapeHtml(show.name) + '">' +
+          '<span class="dot"></span>' +
+          '<span class="series-name">' + escapeHtml(show.name) + '</span>' +
+          '<span class="series-count"></span>' +
+          '<span class="series-bar"><i></i></span>' +
+        '</button>';
+      }).join('');
+      container.dataset.built = '1';
+
+      container.addEventListener('click', function(e){
+        var btn = e.target.closest('.series-item');
+        if (!btn) return;
+        var code = btn.dataset.show;
+        state.shows.has(code) ? state.shows.delete(code) : state.shows.add(code);
+        saveSettings();
+        render();
+      });
     }
 
-    var html = Object.keys(SHOWS).map(function(code){
-      var show = SHOWS[code];
-      var watchedInShow = DATA.filter(function(d){ return d.s === code && state.watched.has(d.i); }).length;
-      return '<button class="show-chip active" data-show="' + code + '">' +
-        '<span class="dot" style="background:' + show.color + '"></span>' +
-        escapeHtml(show.abbr || code) +
-        '<span class="count" data-count-for="' + code + '">' + watchedInShow + '/' + (counts[code]||0) + '</span>' +
-      '</button>';
-    });
-
-    container.innerHTML = html.join('');
-    container.dataset.built = '1';
-    container.addEventListener('click', function(e){
-      var btn = e.target.closest('.show-chip');
-      if (!btn) return;
+    container.querySelectorAll('.series-item').forEach(function(btn){
       var code = btn.dataset.show;
-      state.shows.has(code) ? state.shows.delete(code) : state.shows.add(code);
-      btn.classList.toggle('active');
-      saveSettings();
-      render();
-    });
-  }
-
-  function updateChipStates(){
-    document.querySelectorAll('.show-chip').forEach(function(btn){
-      var code = btn.dataset.show;
-      btn.classList.toggle('active', state.shows.has(code));
-      var span = btn.querySelector('[data-count-for]');
-      if (!span) return;
-      var watchedInShow = DATA.filter(function(d){ return d.s === code && state.watched.has(d.i); }).length;
-      span.textContent = watchedInShow + '/' + (counts[code]||0);
+      var seen = seriesTally(code);
+      var total = counts[code] || 0;
+      btn.setAttribute('aria-pressed', state.shows.has(code));
+      btn.querySelector('.series-count').textContent = seen + '/' + total;
+      btn.querySelector('.series-bar i').style.width = (total ? seen/total*100 : 0) + '%';
     });
   }
 
@@ -281,13 +338,16 @@
     render();
   });
 
-  document.getElementById('orderToggle').addEventListener('click', function(e){
-    var btn = e.target.closest('.seg-btn');
-    if (!btn) return;
-    state.order = btn.dataset.order;
-    syncControlsToState();
-    saveSettings();
-    render();
+  document.querySelectorAll('.seq-nav, .bottom-nav').forEach(function(nav){
+    nav.addEventListener('click', function(e){
+      var btn = e.target.closest('.order-btn');
+      if (btn) setOrder(btn.dataset.order);
+    });
+  });
+
+  window.addEventListener('hashchange', function(){
+    var o = orderFromHash();
+    if (o && o !== state.order) setOrder(o);
   });
 
   document.getElementById('canonToggle').addEventListener('click', function(e){
@@ -322,7 +382,7 @@
     render();
   });
 
-  document.getElementById('emptyReset').addEventListener('click', function(){
+  function resetFilters(){
     state.shows = new Set(Object.keys(SHOWS));
     state.canon = 'all';
     state.search = '';
@@ -330,7 +390,9 @@
     syncControlsToState();
     saveSettings();
     render();
-  });
+  }
+  document.getElementById('emptyReset').addEventListener('click', resetFilters);
+  document.getElementById('clearFilters').addEventListener('click', resetFilters);
 
   document.getElementById('resetProgress').addEventListener('click', function(){
     if (!confirm('Clear your entire viewing history? This cannot be undone.')) return;
@@ -340,24 +402,45 @@
     showToast('Viewing history cleared');
   });
 
-  document.getElementById('jumpNext').addEventListener('click', function(){
-    var next = currentList.find(function(d){ return !state.watched.has(d.i); });
+  function jumpToNext(){
+    var next = nextUnwatched();
     if (!next){ showToast('All caught up in this view!'); return; }
 
-    document.querySelectorAll('.row.is-current').forEach(function(r){ r.classList.remove('is-current'); });
-    var el = listEl.querySelector('[data-id="' + next.i + '"]');
+    var el = listEl.querySelector('.row[data-id="' + next.i + '"]');
     if (!el) return;
     el.classList.add('is-current');
     el.scrollIntoView({behavior:'smooth', block:'center'});
     setTimeout(function(){ el.classList.remove('is-current'); }, 2400);
-  });
+  }
+  document.getElementById('jumpNext').addEventListener('click', jumpToNext);
 
-  var mobileToggle = document.getElementById('mobileToggle');
   var sidebar = document.getElementById('sidebar');
-  mobileToggle.addEventListener('click', function(){
-    var open = sidebar.classList.toggle('open');
-    mobileToggle.setAttribute('aria-expanded', open);
-    mobileToggle.textContent = open ? 'CONTROLS ▴' : 'CONTROLS ▾';
+  var scrim = document.getElementById('scrim');
+  var openSheetBtn = document.getElementById('openSheet');
+
+  function toggleSheet(open){
+    sidebar.classList.toggle('open', open);
+    scrim.hidden = !open;
+    openSheetBtn.setAttribute('aria-expanded', open);
+    document.body.classList.toggle('sheet-open', open);
+  }
+  openSheetBtn.addEventListener('click', function(){ toggleSheet(!sidebar.classList.contains('open')); });
+  document.getElementById('closeSheet').addEventListener('click', function(){ toggleSheet(false); });
+  scrim.addEventListener('click', function(){ toggleSheet(false); });
+
+  document.addEventListener('keydown', function(e){
+    var typing = /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+    if (e.key === 'Escape'){
+      if (sidebar.classList.contains('open')) toggleSheet(false);
+      else if (typing) searchInput.blur();
+      return;
+    }
+    if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.key === '/'){ e.preventDefault(); searchInput.focus(); }
+    else if (e.key === 'n'){ jumpToNext(); }
+    else if (e.key === '1'){ setOrder('c'); }
+    else if (e.key === '2'){ setOrder('a'); }
+    else if (e.key === '3'){ setOrder('tt'); }
   });
 
   var toastEl = document.getElementById('toast');
@@ -379,17 +462,6 @@
   }
   updateStardate();
   setInterval(updateStardate, 60000);
-
-  // mobile: fade the "swipe for more" hint after the first horizontal scroll
-  var mainEl = document.getElementById('main');
-  var scrollHint = document.getElementById('scrollHint');
-  if (mainEl && scrollHint){
-    mainEl.addEventListener('scroll', function(){
-      if (mainEl.scrollLeft > 8){
-        scrollHint.classList.add('faded');
-      }
-    }, { passive:true });
-  }
 
   loadStorage();
 
