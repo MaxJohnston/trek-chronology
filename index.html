@@ -99,7 +99,16 @@
         </div>
       </details>
 
-      <button class="link-btn danger" id="resetProgress">Clear viewing history</button>
+      <section class="panel">
+        <h2 class="panel-label">Viewing History</h2>
+        <div class="history-actions">
+          <button class="action-btn" id="exportProgress">Export</button>
+          <button class="action-btn" id="importProgress">Import</button>
+          <button class="action-btn danger" id="resetProgress">Clear</button>
+          <input type="file" id="importFile" accept=".json,application/json" hidden>
+        </div>
+        <p class="panel-note">Save your progress to a file, load it on another browser or device, or start over.</p>
+      </section>
     </aside>
 
     <main class="main" id="main">

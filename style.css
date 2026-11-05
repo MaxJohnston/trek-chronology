@@ -253,6 +253,10 @@ h2{ margin:0; font-weight: inherit; }
   font-size: 11.5px; padding: 0;
 }
 .link-btn:hover{ color: var(--accent); text-decoration: underline; }
+.history-actions{ display:flex; gap:8px; }
+.history-actions .action-btn{ flex:1; padding: 8px 10px; }
+.history-actions .action-btn.danger:hover{ background: var(--rose); color:#000; }
+.panel-note{ margin: 10px 0 0; font-size: 11.5px; color: var(--text-dim); line-height: 1.4; }
 .link-btn.danger{ color: var(--text-faint); align-self:center; padding: 6px 0 10px; }
 .link-btn.danger:hover{ color: var(--rose); }
 .sep{ margin: 0 5px; color: var(--text-faint); }

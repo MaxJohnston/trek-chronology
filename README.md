@@ -27,7 +27,8 @@ Each sequence has its own accent color (amber, blue, violet). Switching sequence
 
 - Tick the button on any row to mark it watched. Progress shows in the header as a ring and a "Logged X / 995" count.
 - The floating **Up next** button jumps to the first unwatched entry in the current sequence and filters.
-- History and settings (sequence, canon filter, selected series) are saved in `localStorage`, so they survive reloads. They stay in that one browser on that one device. **Clear viewing history** at the bottom of the sidebar wipes it.
+- History and settings (sequence, canon filter, selected series) are saved in `localStorage`, so they survive reloads. They stay in that one browser on that one device. **Clear** in the **Viewing History** panel wipes it (after a confirmation).
+- **Export** and **Import** in the same panel move your watch history between browsers or devices, or keep a backup. Export downloads a `trek-progress-YYYY-MM-DD.json` file; Import loads one back and replaces the current history (it asks first if you already have some). Only watch history is included, not filter settings.
 
 **Everything else**
 
@@ -168,5 +169,17 @@ Rows show a small tag for every code except `Y` and `YM`.
 | --- | --- |
 | `trek-chronology:watched` | Array of watched entry IDs (`i`) |
 | `trek-chronology:settings` | `{ order, canon, shows }` |
+
+An exported progress file looks like this. Import only reads `watched` (a bare array of IDs also works) and ignores IDs that aren't in `data.json`; `titles` is there so the file makes sense to a human:
+
+```json
+{
+  "app": "trek-chronology",
+  "version": 1,
+  "exported": "2026-11-05T14:35:31.947Z",
+  "watched": [0, 1, 2],
+  "titles": ["ENT 1x01/02 Broken Bow", "ENT 1x03 Fight or Flight", "ENT 1x04 Strange New World"]
+}
+```
 
 If `localStorage` is unavailable (some private browsing modes), the site still works but won't remember anything between visits.

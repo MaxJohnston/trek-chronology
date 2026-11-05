@@ -401,6 +401,50 @@
     showToast('Viewing history cleared');
   });
 
+  document.getElementById('exportProgress').addEventListener('click', function(){
+    var ids = DATA.filter(function(d){ return state.watched.has(d.i); });
+    var payload = {
+      app: 'trek-chronology',
+      version: 1,
+      exported: new Date().toISOString(),
+      watched: ids.map(function(d){ return d.i; }),
+      // titles ride along so the file is readable by a human; import only uses `watched`
+      titles: ids.map(function(d){ return d.s + ' ' + (d.e || '') + ' ' + String(d.t == null ? '' : d.t); })
+    };
+    var blob = new Blob([JSON.stringify(payload, null, 2)], {type:'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'trek-progress-' + payload.exported.slice(0, 10) + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+    showToast('Exported ' + payload.watched.length + ' watched entries');
+  });
+
+  var importFile = document.getElementById('importFile');
+  document.getElementById('importProgress').addEventListener('click', function(){ importFile.click(); });
+  importFile.addEventListener('change', function(){
+    var file = importFile.files[0];
+    importFile.value = '';
+    if (!file) return;
+    file.text().then(function(text){
+      var parsed = JSON.parse(text);
+      var raw = Array.isArray(parsed) ? parsed : parsed && parsed.watched;
+      if (!Array.isArray(raw)) throw new Error('no watched list');
+      var known = new Set(DATA.map(function(d){ return d.i; }));
+      var ids = raw.map(Number).filter(function(id){ return known.has(id); });
+
+      if (state.watched.size && !confirm('Replace your current history (' + state.watched.size + ' watched) with the ' + ids.length + ' entries in this file?')) return;
+      state.watched = new Set(ids);
+      saveWatched();
+      render();
+      showToast('Imported ' + ids.length + ' watched entries');
+    }).catch(function(){
+      showToast('That file isn\'t a valid progress export');
+    });
+  });
+
   function jumpToNext(){
     var next = nextUnwatched();
     if (!next){ showToast('All caught up in this view!'); return; }
