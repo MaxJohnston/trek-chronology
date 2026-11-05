@@ -45,7 +45,8 @@
 
   var ROUTES = { c:'chronological', a:'release', tt:'time-travel' };
 
-  // `from` is the first year that belongs to an era; release eras go by air date
+  // `from` is the first year that belongs to an era; release eras go by air date (YYYYMMDD),
+  // with Berman's era opening on TNG 3x01
   var CENTURIES = [
     {key:'22c',  label:'22nd Century', from:2100},
     {key:'23c',  label:'23rd Century', from:2200},
@@ -57,10 +58,11 @@
     c: CENTURIES,
     tt: [{key:'pre', label:'Before 2100', from:-Infinity}].concat(CENTURIES),
     a: [
-      {key:'desilu',    label:'Desilu Era',         hint:'1966 – 1968', from:-Infinity},
-      {key:'paramount', label:'Paramount Era',      hint:'1968 – 2005', from:1968.5},
-      {key:'badrobot',  label:'Bad Robot Era',      hint:'2009 – 2016', from:2006},
-      {key:'hideout',   label:'Secret Hideout Era', hint:'2017 – now',  from:2017}
+      {key:'desilu',      label:'Desilu Era',         hint:'1966 – 1968',               from:-Infinity},
+      {key:'roddenberry', label:'Roddenberry Era',    hint:'Paramount · 1968 – 1989',   from:19680601},
+      {key:'berman',      label:'Berman Era',         hint:'Paramount · 1989 – 2005',   from:19890925},
+      {key:'badrobot',    label:'Bad Robot Era',      hint:'2009 – 2016',               from:20060101},
+      {key:'hideout',     label:'Secret Hideout Era', hint:'2017 – now',                from:20170101}
     ]
   };
 
@@ -70,6 +72,8 @@
     search: '',
     shows: new Set(Object.keys(SHOWS)),
     watched: new Set(),
+    hideWatched: false,
+    // era keys and season keys ("s:…") share one set per view
     collapsed: { c: new Set(), a: new Set(), tt: new Set() }
   };
 
@@ -98,6 +102,7 @@
           var s = JSON.parse(settingsRaw);
           if (s.order) state.order = s.order;
           if (s.canon === 'canon') state.canon = 'canon';
+          state.hideWatched = s.hideWatched === true;
           if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
           if (s.collapsed) Object.keys(state.collapsed).forEach(function(k){
             if (Array.isArray(s.collapsed[k])) state.collapsed[k] = new Set(s.collapsed[k]);
@@ -124,6 +129,7 @@
     localStorage.setItem(SETTINGS_KEY, JSON.stringify({
       order: state.order,
       canon: state.canon,
+      hideWatched: state.hideWatched,
       shows: [...state.shows],
       collapsed: {
         c: [...state.collapsed.c],
@@ -156,6 +162,9 @@
     document.querySelectorAll('#canonToggle .seg-btn').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.canon === state.canon);
     });
+    document.querySelectorAll('#watchedToggle .seg-btn').forEach(function(b){
+      b.setAttribute('aria-pressed', (b.dataset.hide === 'true') === state.hideWatched);
+    });
   }
 
   // Earth dates are messy ("2293 (2260s Flashback)", "4200s", blank), so eras are cut
@@ -171,22 +180,27 @@
     var paren = s.match(/\(([^)]*\d[^)]*)\)/);
     var m = (paren ? paren[1] : s).match(/(\d{1,4})\s*(mya|bce?)?/i);
     if (!m) return null;
-    return m[2] ? -Number(m[1]) : Number(m[1]);
+    if (!m[2]) return Number(m[1]);
+    return -Number(m[1]) * (/mya/i.test(m[2]) ? 1e6 : 1);
   }
   function airYear(d){
-    var m = String(d.d || '').match(/^(\d{4})-(\d{2})/);
-    return m ? Number(m[1]) + (m[2] - 1) / 12 : null;
+    var m = String(d.d || '').match(/^(\d{4})-(\d{2})-(\d{2})/);
+    return m ? Number(m[1] + m[2] + m[3]) : null;
   }
   var ERA_YEAR = { c: leadYear, tt: travelYear, a: airYear };
 
-  var eraStarts = {};
-  Object.keys(ERAS).forEach(function(field){
-    var eras = ERAS[field];
+  function slotsFor(field){
     var slots = DATA.filter(function(d){ return d[field] != null; }).map(function(d){ return {d:d, pos:d[field]}; });
     if (field === 'tt'){
       DATA.forEach(function(d){ if (d.tt2 != null) slots.push({d:d, pos:d.tt2}); });
     }
-    slots.sort(function(a,b){ return a.pos - b.pos; });
+    return slots.sort(function(a,b){ return a.pos - b.pos; });
+  }
+
+  var eraStarts = {};
+  Object.keys(ERAS).forEach(function(field){
+    var eras = ERAS[field];
+    var slots = slotsFor(field);
 
     var idx = slots.map(function(s){
       var y = ERA_YEAR[field](s.d);
@@ -208,6 +222,107 @@
       for (; cur < to; cur++) starts[cur + 1] = slots[i].pos;
     });
     eraStarts[field] = starts;
+  });
+
+  function fmtYear(y){
+    if (y <= -1e6) return (-y / 1e6) + 'M BCE';
+    return y < 0 ? (-y) + ' BCE' : String(y);
+  }
+  function span(lo, hi, fmt){
+    if (lo == null) return '';
+    return lo === hi ? fmt(lo) : fmt(lo) + ' – ' + fmt(hi);
+  }
+
+  // century headers get the span of years (and TNG-style stardates) actually covered
+  ['c', 'tt'].forEach(function(field){
+    var eras = ERAS[field];
+    var years = eras.map(function(){ return []; });
+    var dates = eras.map(function(){ return []; });
+    slotsFor(field).forEach(function(slot){
+      var i = eraIndex(field, slot.pos);
+      var y = ERA_YEAR[field](slot.d);
+      var lo = eras[i].from, hi = eras[i + 1] ? eras[i + 1].from : Infinity;
+      if (y != null && y >= lo && y < hi) years[i].push(y);
+      var sd = String(slot.d.sd || '').match(/^\d{5}(?!\d)(\.\d+)?/);
+      if (field === 'c' && sd) dates[i].push(Math.floor(Number(sd[0])));
+    });
+    eras.forEach(function(era, i){
+      var y = years[i], sd = dates[i];
+      var parts = [span(y.length ? Math.min.apply(null, y) : null, Math.max.apply(null, y), fmtYear)];
+      if (sd.length > 2) parts.push('SD ' + span(Math.min.apply(null, sd), Math.max.apply(null, sd), String));
+      (era.hints = era.hints || {})[field] = parts.filter(Boolean).join(' · ');
+    });
+  });
+
+  // Season sections always hold whole seasons. Seasons that air or take place side by side
+  // (TNG 6 with DS9 1) share a section.
+  // A season scattered across the list (flashbacks, time travel) is anchored on its main
+  // block; its strays stay where they fall.
+  // Prodigy's first season aired in two halves a year apart, so each half counts as its own season
+  var SPLIT_SEASONS = { 'PRO|1': 10 };
+  function seasonOf(d){
+    var m = String(d.e || '').match(/^(\d+)x(\d+)/);
+    if (!m || Number(m[1]) === 0) return null;
+    var n = Number(m[1]), half = SPLIT_SEASONS[d.s + '|' + n];
+    return half ? n + (Number(m[2]) <= half ? 'A' : 'B') : n;
+  }
+  var seasonSize = {};
+  DATA.forEach(function(d){
+    var n = seasonOf(d);
+    if (n != null) seasonSize[d.s + '|' + n] = (seasonSize[d.s + '|' + n] || 0) + 1;
+  });
+
+  var runKeys = {}, runSeasons = {};
+  Object.keys(ERAS).forEach(function(field){
+    // release order has no strays, so a season split by a mid-season break stays whole
+    var strayGap = field === 'a' ? Infinity : 25;
+    var slots = slotsFor(field);
+    var keys = runKeys[field] = {};
+    var eraOfSlot = slots.map(function(s){ return eraIndex(field, s.pos); });
+
+    ERAS[field].forEach(function(era, e){
+      var idx = [];
+      eraOfSlot.forEach(function(x, i){ if (x === e) idx.push(i); });
+      if (!idx.length) return;
+
+      var bySeason = {};
+      idx.forEach(function(i){
+        var n = seasonOf(slots[i].d);
+        var id = slots[i].d.s + '|' + n;
+        if (n != null && seasonSize[id] >= 3) (bySeason[id] = bySeason[id] || []).push(i);
+      });
+
+      var spans = Object.keys(bySeason).map(function(id){
+        var at = bySeason[id], chunks = [[at[0]]];
+        for (var j = 1; j < at.length; j++){
+          if (at[j] - at[j - 1] > strayGap) chunks.push([]);
+          chunks[chunks.length - 1].push(at[j]);
+        }
+        var main = chunks.sort(function(a, b){ return b.length - a.length; })[0];
+        if (main.length * 2 < seasonSize[id]) return null;
+        return {id:id, lo:main[0], hi:main[main.length - 1]};
+      }).filter(Boolean).sort(function(a, b){ return a.lo - b.lo; });
+
+      var clusters = [];
+      spans.forEach(function(sp){
+        var c = clusters[clusters.length - 1];
+        if (c && sp.lo <= c.hi){
+          c.hi = Math.max(c.hi, sp.hi);
+          c.ids.push(sp.id);
+        } else clusters.push({lo:sp.lo, hi:sp.hi, ids:[sp.id]});
+      });
+
+      // movies and one-offs between sections stay loose; only ones inside a section's span join it
+      clusters.forEach(function(c){
+        var key = 's:' + c.ids.join('+');
+        var stop = c.hi + 1;
+        runSeasons[key] = c.ids.map(function(id){
+          var p = id.split('|');
+          return {s:p[0], n:p[1]};
+        });
+        for (var i = c.lo; i < stop; i++) keys[slots[i].pos] = key;
+      });
+    });
   });
 
   function eraIndex(field, pos){
@@ -256,12 +371,12 @@
   }
 
   function isFiltered(){
-    return state.canon !== 'all' || !!state.search || visibleShowCodes().some(function(c){ return !state.shows.has(c); });
+    return state.canon !== 'all' || state.hideWatched || !!state.search || visibleShowCodes().some(function(c){ return !state.shows.has(c); });
   }
 
   function activeFilterCount(){
     var hidden = visibleShowCodes().filter(function(c){ return !state.shows.has(c); }).length;
-    return (hidden ? 1 : 0) + (state.canon !== 'all' ? 1 : 0) + (state.search ? 1 : 0);
+    return (hidden ? 1 : 0) + (state.canon !== 'all' ? 1 : 0) + (state.search ? 1 : 0) + (state.hideWatched ? 1 : 0);
   }
 
   function visibleShowCodes(){
@@ -299,13 +414,13 @@
     return '<span class="' + cls + '" data-label="' + label + '" title="' + text + '">' + text + '</span>';
   }
 
-  function rowHtml(d, nextId){
+  function rowHtml(d, nextId, inRun){
     var show = SHOWS[d.s] || {name:d.s, color:'#888'};
     var watched = state.watched.has(d.i);
     var orderVal = d[state.order];
     var title = escapeHtml(d.t == null ? '' : d.t);
     var sub = [d.e, d.dist].filter(Boolean).map(escapeHtml).join(' · ') || '—';
-    var cls = 'row' + (watched ? ' is-watched' : '') + (!d.repeat && d.i === nextId ? ' is-next' : '');
+    var cls = 'row' + (watched ? ' is-watched' : '') + (!d.repeat && d.i === nextId ? ' is-next' : '') + (inRun ? ' in-run' : '');
 
     return '<div class="' + cls + '" data-id="' + d.i + '" style="--show:' + show.color + '">' +
       '<button class="watch-btn" aria-pressed="' + watched + '" aria-label="' + (watched ? 'Mark unwatched' : 'Mark watched') + '" data-id="' + d.i + '"></button>' +
@@ -344,9 +459,18 @@
       emptyEl.hidden = false;
     } else {
       emptyEl.hidden = true;
+      var collapsed = state.collapsed[state.order];
+      var rowsHtml = function(rows, inRun){
+        return rows.filter(isShown).map(function(d){ return rowHtml(d, next && next.i, inRun); }).join('');
+      };
       listEl.innerHTML = groupByEra(currentList).map(function(g){
-        var open = !state.collapsed[state.order].has(g.era.key);
-        return eraHeadHtml(g, open) + (open ? g.rows.map(function(d){ return rowHtml(d, next && next.i); }).join('') : '');
+        var open = !collapsed.has(g.era.key);
+        return eraHeadHtml(g, open) + (open ? g.runs.map(function(run){
+          if (!run.key) return rowsHtml(run.rows);
+          if (!run.rows.some(isShown)) return '';
+          var runOpen = !collapsed.has(run.key);
+          return seasonHeadHtml(run, runOpen) + (runOpen ? rowsHtml(run.rows, true) : '');
+        }).join('') : '');
       }).join('');
     }
 
@@ -355,27 +479,63 @@
     renderMeta(next);
   }
 
+  function isShown(d){
+    return !state.hideWatched || !state.watched.has(d.i);
+  }
+
+  // groups keep watched rows so header counts stay whole when watched rows are hidden
   function groupByEra(list){
     var groups = [];
     var field = state.order;
     list.forEach(function(d){
       var era = ERAS[field][d[field] == null ? ERAS[field].length - 1 : eraIndex(field, d[field])];
-      var last = groups[groups.length - 1];
-      if (last && last.era === era) last.rows.push(d);
-      else groups.push({era:era, rows:[d]});
+      var g = groups[groups.length - 1];
+      if (!g || g.era !== era){
+        g = {era:era, rows:[], runs:[]};
+        groups.push(g);
+      }
+      g.rows.push(d);
+      var key = runKeys[field][d[field]] || null;
+      var run = g.runs[g.runs.length - 1];
+      if (run && run.key === key) run.rows.push(d);
+      else g.runs.push({key:key, rows:[d]});
     });
     return groups;
   }
 
+  function tally(rows){
+    var seen = rows.filter(function(d){ return state.watched.has(d.i); }).length;
+    return {seen:seen, total:rows.length, done:seen === rows.length};
+  }
+
   function eraHeadHtml(g, open){
-    var seen = g.rows.filter(function(d){ return state.watched.has(d.i); }).length;
-    var total = g.rows.length;
-    return '<button class="era-head' + (seen === total ? ' is-done' : '') + '" data-era="' + g.era.key + '" aria-expanded="' + open + '">' +
+    var t = tally(g.rows);
+    var hint = g.era.hints ? g.era.hints[state.order] : g.era.hint;
+    // sticky headers report their stuck position, so a plain anchor marks where each era really starts
+    return '<i class="era-anchor" data-era="' + g.era.key + '"></i>' +
+      '<button class="era-head' + (t.done ? ' is-done' : '') + '" data-era="' + g.era.key + '" aria-expanded="' + open + '">' +
       '<span class="era-chev" aria-hidden="true"></span>' +
       '<span class="era-name">' + escapeHtml(g.era.label) + '</span>' +
-      (g.era.hint ? '<span class="era-hint">' + escapeHtml(g.era.hint) + '</span>' : '') +
-      '<span class="era-count">' + seen + ' / ' + total + '</span>' +
-      '<span class="era-bar"><i style="width:' + (seen / total * 100) + '%"></i></span>' +
+      (hint ? '<span class="era-hint">' + escapeHtml(hint) + '</span>' : '') +
+      '<span class="era-count">' + t.seen + ' / ' + t.total + '</span>' +
+      '<span class="era-bar"><i style="width:' + (t.seen / t.total * 100) + '%"></i></span>' +
+    '</button>';
+  }
+
+  function seasonHeadHtml(run, open){
+    var t = tally(run.rows);
+    var first = SHOWS[run.rows[0].s] || {color:'#888'};
+    var label = runSeasons[run.key].map(function(x){
+      var show = SHOWS[x.s] || {name:x.s, color:'#888'};
+      return '<span class="season-part">' +
+        '<span class="show-pill" style="--show:' + show.color + '" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || x.s) + '</span>' +
+        '<span class="season-name">Season ' + x.n + '</span>' +
+      '</span>';
+    }).join('<span class="season-amp">&amp;</span>');
+    return '<button class="season-head' + (t.done ? ' is-done' : '') + '" data-run="' + escapeHtml(run.key) + '" aria-expanded="' + open + '" style="--show:' + first.color + '">' +
+      '<span class="era-chev" aria-hidden="true"></span>' +
+      '<span class="season-label">' + label + '</span>' +
+      '<span class="era-count">' + t.seen + ' / ' + t.total + '</span>' +
     '</button>';
   }
 
@@ -383,22 +543,48 @@
     return ERAS[state.order][eraIndex(state.order, d[state.order])].key;
   }
 
-  function toggleEra(key){
+  function headFor(key){
+    return [].find.call(listEl.querySelectorAll('.era-head, .season-head'), function(h){
+      return (h.dataset.era || h.dataset.run) === key;
+    });
+  }
+
+  function toggleSection(key){
     var set = state.collapsed[state.order];
-    var head = listEl.querySelector('.era-head[data-era="' + key + '"]');
-    // if the header is pinned at the top, keep it there instead of leaving the reader mid-list
-    var pinned = head && head.getBoundingClientRect().top <= listTopEl.getBoundingClientRect().bottom + 1;
+    var head = headFor(key);
+    // if the header has scrolled up to the top, keep it there instead of leaving the reader mid-list
+    var pinned = head && head.getBoundingClientRect().top <= listTopEl.getBoundingClientRect().bottom + eraOffset(head) + 1;
     set.has(key) ? set.delete(key) : set.add(key);
     saveSettings();
     render();
     if (pinned){
-      head = listEl.querySelector('.era-head[data-era="' + key + '"]');
-      mainEl.scrollTop = head.offsetTop - listTopEl.offsetHeight;
+      head = headFor(key);
+      var anchor = head.classList.contains('era-head') ? head.previousElementSibling : head;
+      mainEl.scrollTop = anchor.offsetTop - listTopEl.offsetHeight - eraOffset(head);
     }
   }
 
+  // season headers sit under the pinned era header
+  function eraOffset(head){
+    if (!head.classList.contains('season-head')) return 0;
+    var era = listEl.querySelector('.era-head');
+    return era ? era.offsetHeight : 0;
+  }
+
+  function jumpEra(dir){
+    var heads = [].slice.call(listEl.querySelectorAll('.era-anchor'));
+    if (!heads.length) return;
+    var top = mainEl.scrollTop + listTopEl.offsetHeight + 2;
+    var cur = -1;
+    heads.forEach(function(h, i){ if (h.offsetTop <= top) cur = i; });
+    // "previous" from partway into an era goes back to that era's own header first
+    if (dir < 0 && cur >= 0 && heads[cur].offsetTop < top - 4 && mainEl.scrollTop > 0) dir = 0;
+    var target = heads[Math.max(0, Math.min(heads.length - 1, cur + dir))];
+    mainEl.scrollTo({top: target.offsetTop - listTopEl.offsetHeight, behavior:'smooth'});
+  }
+
   function renderMeta(next){
-    var unique = new Set(currentList.map(function(d){ return d.i; })).size;
+    var unique = new Set(currentList.filter(isShown).map(function(d){ return d.i; })).size;
     document.getElementById('resultCount').textContent = isFiltered()
       ? 'Showing ' + unique + ' of ' + DATA.length
       : DATA.length + ' entries';
@@ -476,8 +662,8 @@
   }
 
   listEl.addEventListener('click', function(e){
-    var head = e.target.closest('.era-head');
-    if (head){ toggleEra(head.dataset.era); return; }
+    var head = e.target.closest('.era-head, .season-head');
+    if (head){ toggleSection(head.dataset.era || head.dataset.run); return; }
     var btn = e.target.closest('.watch-btn');
     if (!btn) return;
     var id = Number(btn.dataset.id);
@@ -522,7 +708,10 @@
   document.getElementById('toggleEras').addEventListener('click', function(e){
     var set = state.collapsed[state.order];
     if (e.target.dataset.action === 'expand') set.clear();
-    else ERAS[state.order].forEach(function(era){ set.add(era.key); });
+    else {
+      ERAS[state.order].forEach(function(era){ set.add(era.key); });
+      Object.keys(runSeasons).forEach(function(key){ set.add(key); });
+    }
     saveSettings();
     render();
     mainEl.scrollTop = 0;
@@ -540,9 +729,23 @@
     render();
   });
 
+  document.getElementById('watchedToggle').addEventListener('click', function(e){
+    var btn = e.target.closest('.seg-btn');
+    if (!btn) return;
+    setHideWatched(btn.dataset.hide === 'true');
+  });
+
+  function setHideWatched(hide){
+    state.hideWatched = hide;
+    syncControlsToState();
+    saveSettings();
+    render();
+  }
+
   function resetFilters(){
     state.shows = new Set(Object.keys(SHOWS));
     state.canon = 'all';
+    state.hideWatched = false;
     state.search = '';
     searchInput.value = '';
     syncControlsToState();
@@ -608,8 +811,10 @@
     var next = nextUnwatched();
     if (!next){ showToast('All caught up in this view!'); return; }
 
-    var era = eraKeyOf(next);
-    if (state.collapsed[state.order].delete(era)){
+    var set = state.collapsed[state.order];
+    var opened = set.delete(eraKeyOf(next));
+    if (set.delete(runKeys[state.order][next[state.order]])) opened = true;
+    if (opened){
       saveSettings();
       render();
     }
@@ -649,6 +854,12 @@
     else if (e.key === '1'){ setOrder('c'); }
     else if (e.key === '2'){ setOrder('a'); }
     else if (e.key === '3'){ setOrder('tt'); }
+    else if (e.key === ']'){ jumpEra(1); }
+    else if (e.key === '['){ jumpEra(-1); }
+    else if (e.key === 'h'){
+      setHideWatched(!state.hideWatched);
+      showToast(state.hideWatched ? 'Hiding watched entries' : 'Showing watched entries');
+    }
   });
 
   var toastEl = document.getElementById('toast');

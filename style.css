@@ -604,6 +604,7 @@ h2{ margin:0; font-weight: inherit; }
 }
 
 /* era sections */
+.era-anchor{ display:block; height:0; }
 .era-head{
   position: sticky;
   top: var(--list-top-h, 0px);
@@ -630,7 +631,8 @@ h2{ margin:0; font-weight: inherit; }
   transform: translateY(-2px) rotate(45deg);
   transition: transform .2s var(--ease);
 }
-.era-head[aria-expanded="false"] .era-chev{ transform: translateY(1px) rotate(-45deg); }
+.era-head[aria-expanded="false"] .era-chev,
+.season-head[aria-expanded="false"] .era-chev{ transform: translateY(1px) rotate(-45deg); }
 .era-name{
   grid-area: name;
   font-family:'Antonio', sans-serif;
@@ -667,6 +669,46 @@ h2{ margin:0; font-weight: inherit; }
   background: var(--accent);
   transition: width .4s var(--ease);
 }
+
+.season-head{
+  display:grid;
+  grid-template-columns: 16px minmax(0,1fr) auto;
+  grid-template-areas: "chev label count";
+  align-items:center;
+  column-gap: 10px;
+  width: 100%;
+  padding: 9px 18px 9px 30px;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--show) 6%, var(--panel));
+  text-align: left;
+}
+.season-head:hover{ background: color-mix(in srgb, var(--show) 12%, var(--panel)); }
+.season-head .era-chev{ width: 6px; height: 6px; border-color: var(--show); }
+.season-label{
+  grid-area: label;
+  display:flex;
+  flex-wrap: wrap;
+  align-items:center;
+  gap: 6px 10px;
+}
+.season-part{ display:inline-flex; align-items:center; gap: 8px; }
+.season-head .show-pill{ grid-area: auto; padding: 2px 6px; min-width: 40px; margin: 0; }
+.season-name{
+  font-family:'Antonio', sans-serif;
+  font-size: 13.5px;
+  letter-spacing: .8px;
+  text-transform: uppercase;
+  color: var(--text);
+  white-space: nowrap;
+}
+.row.in-run{ background: rgba(255,255,255,0.018); }
+.row.in-run:hover{ background: var(--panel2); }
+.row.in-run.is-next{ background: color-mix(in srgb, var(--accent) 5%, transparent); }
+/* loose rows right after a season section get a divider so they don't read as part of it */
+.row.in-run + .row:not(.in-run){ border-top: 2px solid var(--panel3); }
+.season-amp{ color: var(--text-faint); font-size: 12px; }
+.season-head.is-done .era-count{ color: var(--show); }
 
 /* narrower list panes stack each entry instead of squeezing columns */
 @container (max-width: 820px){
@@ -706,6 +748,9 @@ h2{ margin:0; font-weight: inherit; }
   .ep-meta span[title="—"]{ display:none; }
   .era-head{ padding: 11px 14px 0; column-gap: 8px; }
   .era-bar{ margin: 0 -14px; }
+  .era-head{ grid-template-columns: 16px auto 1fr auto; grid-template-areas: "chev name . count" "chev hint hint hint" "bar bar bar bar"; row-gap: 3px; }
+  .era-bar{ margin-top: 6px; }
+  .season-head{ padding: 9px 14px 9px 22px; column-gap: 8px; }
 }
 
 .empty-state{
