@@ -4,6 +4,10 @@ A single-page viewing guide to the whole Star Trek franchise. It lists 995 entri
 
 It's plain HTML, CSS and JavaScript with no framework, no build step and no backend. Your watch history is stored in your own browser.
 
+**▶ Use the live site: [https://maxjohnston.github.io/trek-chronology/](https://maxjohnston.github.io/trek-chronology/)**
+
+There's nothing to install. Open the link in any browser, on desktop or phone, and start watching. Bookmark it to come back to your progress.
+
 ## Features
 
 **Three viewing sequences**
@@ -50,6 +54,8 @@ On narrow screens (860px and below) the sequence tabs move to a bottom navigatio
 
 ## Running it
 
+To just use the guide, go to **[https://maxjohnston.github.io/trek-chronology/](https://maxjohnston.github.io/trek-chronology/)**. The steps below are only for running your own copy locally, for example while editing the code or data.
+
 The site loads `data.json` with `fetch()`, which browsers block for pages opened directly from disk (`file://`). Serve the folder over `http://` instead. Any static server works; run one of these from inside the folder:
 
 ```bash
@@ -66,7 +72,9 @@ In VS Code, the Live Server extension does the same job.
 
 ### Deploying
 
-Because it's all static files, the folder can go as-is onto any static host, such as GitHub Pages, Netlify or Cloudflare Pages. There's nothing to build.
+The live site is hosted on GitHub Pages at [https://maxjohnston.github.io/trek-chronology/](https://maxjohnston.github.io/trek-chronology/). Because it's all static files, the folder goes up as-is with nothing to build, and the same files would work on any other static host.
+
+Watch history is stored per site, so progress saved on `localhost` won't appear on the live site (and vice versa). Use Export and Import to move it across.
 
 ## File layout
 
