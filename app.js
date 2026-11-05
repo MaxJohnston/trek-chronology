@@ -60,7 +60,7 @@
     a: [
       {key:'desilu',      label:'Desilu Era',         hint:'1966 – 1968',               from:-Infinity},
       {key:'roddenberry', label:'Roddenberry Era',    hint:'Paramount · 1968 – 1989',   from:19680601},
-      {key:'berman',      label:'Berman Era',         hint:'Paramount · 1989 – 2005',   from:19890925},
+      {key:'berman',      label:'Berman and Piller Eras', hint:'Paramount · 1989 – 2005',   from:19890925},
       {key:'badrobot',    label:'Bad Robot Era',      hint:'2009 – 2016',               from:20060101},
       {key:'hideout',     label:'Secret Hideout Era', hint:'2017 – now',                from:20170101}
     ]
