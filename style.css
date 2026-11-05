@@ -448,7 +448,7 @@ h2{ margin:0; font-weight: inherit; }
 
 .list-head, .row{
   display:grid;
-  grid-template-columns: 30px 44px 58px minmax(0,1fr) 100px 120px 150px;
+  grid-template-columns: 30px 44px 58px minmax(0,1fr) 96px 130px 170px;
   gap: 14px;
   align-items:center;
   padding-left: 18px;
@@ -540,9 +540,6 @@ h2{ margin:0; font-weight: inherit; }
   color: var(--text-faint);
   font-family:'IBM Plex Mono', monospace;
   margin-top: 2px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
 .ep-note{
   font-size: 11.5px;
@@ -572,10 +569,9 @@ h2{ margin:0; font-weight: inherit; }
 .ep-meta span{
   font-family:'IBM Plex Mono', monospace;
   font-size: 11.5px;
+  line-height: 1.4;
   color: var(--text-dim);
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  overflow-wrap: anywhere;
 }
 
 .watch-btn{
