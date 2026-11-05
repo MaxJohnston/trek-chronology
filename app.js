@@ -260,7 +260,11 @@
   // block; its strays stay where they fall.
   // Prodigy's first season aired in two halves a year apart, so each half counts as its own season
   var SPLIT_SEASONS = { 'PRO|1': 10 };
-  function seasonOf(d){
+  // Scouts lists each season as a single entry, so its seasons share one section on the
+  // timelines; in release order they're months apart and stay single rows
+  var WHOLE_SHOW = { SCO: 'Seasons 1 – 3' };
+  function seasonOf(d, field){
+    if (WHOLE_SHOW[d.s] && field !== 'a') return WHOLE_SHOW[d.s];
     var m = String(d.e || '').match(/^(\d+)x(\d+)/);
     if (!m || Number(m[1]) === 0) return null;
     var n = Number(m[1]), half = SPLIT_SEASONS[d.s + '|' + n];
@@ -268,8 +272,9 @@
   }
   var seasonSize = {};
   DATA.forEach(function(d){
-    var n = seasonOf(d);
-    if (n != null) seasonSize[d.s + '|' + n] = (seasonSize[d.s + '|' + n] || 0) + 1;
+    [seasonOf(d, 'a'), seasonOf(d, 'c')].filter(function(n, i, all){ return n != null && all.indexOf(n) === i; }).forEach(function(n){
+      seasonSize[d.s + '|' + n] = (seasonSize[d.s + '|' + n] || 0) + 1;
+    });
   });
 
   var runKeys = {}, runSeasons = {};
@@ -287,7 +292,7 @@
 
       var bySeason = {};
       idx.forEach(function(i){
-        var n = seasonOf(slots[i].d);
+        var n = seasonOf(slots[i].d, field);
         var id = slots[i].d.s + '|' + n;
         if (n != null && seasonSize[id] >= 3) (bySeason[id] = bySeason[id] || []).push(i);
       });
@@ -323,6 +328,23 @@
         for (var i = c.lo; i < stop; i++) keys[slots[i].pos] = key;
       });
     });
+
+    // Episodes from seasons that never get a section of their own (Short Treks) join the
+    // section they sit right against. Strays from a season that has its own section
+    // elsewhere (Living Witness, flashbacks) stay separate, and so do movies.
+    var sectioned = {};
+    Object.keys(keys).forEach(function(pos){
+      runSeasons[keys[pos]].forEach(function(x){ sectioned[x.s + '|' + x.n] = true; });
+    });
+    var drifts = function(i){
+      var n = seasonOf(slots[i].d, field), id = slots[i].d.s + '|' + n;
+      return keys[slots[i].pos] == null && n != null && seasonSize[id] >= 3 && !sectioned[id];
+    };
+    var join = function(i, j){
+      if (eraOfSlot[i] === eraOfSlot[j] && drifts(i) && keys[slots[j].pos]) keys[slots[i].pos] = keys[slots[j].pos];
+    };
+    for (var a = 1; a < slots.length; a++) join(a, a - 1);
+    for (var b = slots.length - 2; b >= 0; b--) join(b, b + 1);
   });
 
   function eraIndex(field, pos){
@@ -525,11 +547,22 @@
   function seasonHeadHtml(run, open){
     var t = tally(run.rows);
     var first = SHOWS[run.rows[0].s] || {color:'#888'};
-    var label = runSeasons[run.key].map(function(x){
+    // one pill per show, with its seasons folded together: "DS9 Seasons 3 – 4"
+    var byShow = [];
+    runSeasons[run.key].forEach(function(x){
+      var entry = byShow.find(function(b){ return b.s === x.s; });
+      if (entry) entry.n.push(x.n);
+      else byShow.push({s:x.s, n:[x.n]});
+    });
+    var label = byShow.map(function(x){
       var show = SHOWS[x.s] || {name:x.s, color:'#888'};
+      var nums = x.n.slice().sort(function(a, b){ return parseInt(a, 10) - parseInt(b, 10) || String(a).localeCompare(String(b)); });
+      var text = !/^\d/.test(nums[0]) ? nums[0]
+        : nums.length === 1 ? 'Season ' + nums[0]
+        : 'Seasons ' + nums[0] + ' – ' + nums[nums.length - 1];
       return '<span class="season-part">' +
         '<span class="show-pill" style="--show:' + show.color + '" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || x.s) + '</span>' +
-        '<span class="season-name">Season ' + x.n + '</span>' +
+        '<span class="season-name">' + escapeHtml(text) + '</span>' +
       '</span>';
     }).join('<span class="season-amp">&amp;</span>');
     return '<button class="season-head' + (t.done ? ' is-done' : '') + '" data-run="' + escapeHtml(run.key) + '" aria-expanded="' + open + '" style="--show:' + first.color + '">' +
