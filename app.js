@@ -28,17 +28,21 @@
     DSC:  {name:"Discovery",             color:"#C15CFF"},
     "Short Trek":       {name:"Short Treks",        color:"#FFB86B", abbr:"ST"},
     PIC:  {name:"Picard",                color:"#4FA3E3"},
-    SNW:  {name:"Strange New Worlds",    color:"#FFD23F"},
     LD:   {name:"Lower Decks",           color:"#7ED957"},
     PRO:  {name:"Prodigy",               color:"#59C9A5"},
-    KHA:  {name:"Khan (Audio Drama)",    color:"#D65DB1"},
-    SCO:  {name:"Scouts",                color:"#FF7BAC"},
-    SA:   {name:"Starfleet Academy",     color:"#00C2CB"},
-    "Very Short Treks": {name:"Very Short Treks",   color:"#FFA36B", abbr:"VST"},
-    "Short":            {name:"OTOY Shorts",        color:"#B0B0B0", abbr:"OTOY"},
+    SNW:  {name:"Strange New Worlds",    color:"#FFD23F"},
     "Long Trek":        {name:"Long Treks",color:"#9A9A9A", abbr:"LT"},
-    Comic: {name:"Comics", color:"#D9A441"}
+    KHA:  {name:"Khan (Audio Drama)",    color:"#D65DB1"},
+    SA:   {name:"Starfleet Academy",     color:"#00C2CB"},
+    "Short":            {name:"OTOY Shorts",        color:"#B0B0B0", abbr:"OTOY"},
+    Comic: {name:"Comics", color:"#D9A441"},
+    // kids' shorts sit at the bottom and start switched off
+    SCO:  {name:"Scouts",                color:"#FF7BAC", optIn:true},
+    "Very Short Treks": {name:"Very Short Treks",   color:"#FFA36B", abbr:"VST", optIn:true}
   };
+  function defaultShows(){
+    return new Set(Object.keys(SHOWS).filter(function(c){ return !SHOWS[c].optIn; }));
+  }
 
   // canon codes from the CSV, bucketed for the filter toggle
   var CANON_CODES = { canon: ["Y","YM","Y?","B"], noncanon: ["N","?","M","R"] };
@@ -70,7 +74,7 @@
     order: 'c',
     canon: 'all',
     search: '',
-    shows: new Set(Object.keys(SHOWS)),
+    shows: defaultShows(),
     watched: new Set(),
     hideWatched: false,
     // era keys and season keys ("s:…") share one set per view
@@ -103,7 +107,11 @@
           if (s.order) state.order = s.order;
           if (s.canon === 'canon') state.canon = 'canon';
           state.hideWatched = s.hideWatched === true;
-          if (Array.isArray(s.shows)) state.shows = new Set(s.shows);
+          if (Array.isArray(s.shows)){
+            state.shows = new Set(s.shows);
+            // settings saved before the opt-in shows existed get them switched off once
+            if (!s.v) Object.keys(SHOWS).forEach(function(c){ if (SHOWS[c].optIn) state.shows.delete(c); });
+          }
           if (s.collapsed) Object.keys(state.collapsed).forEach(function(k){
             if (Array.isArray(s.collapsed[k])) state.collapsed[k] = new Set(s.collapsed[k]);
           });
@@ -127,6 +135,7 @@
   function saveSettings(){
     if (!storageWorks) return;
     localStorage.setItem(SETTINGS_KEY, JSON.stringify({
+      v: 2,
       order: state.order,
       canon: state.canon,
       hideWatched: state.hideWatched,
@@ -277,7 +286,8 @@
     });
   });
 
-  var runKeys = {}, runSeasons = {};
+  var runKeys = {}, runSeasons = {}, runLabels = {};
+  var KELVIN_LABEL = { c: 'Romulan Supernova & Kelvin Timeline', tt: 'Narada Incursion & Kelvin Timeline' };
   Object.keys(ERAS).forEach(function(field){
     // release order has no strays, so a season split by a mid-season break stays whole
     var strayGap = field === 'a' ? Infinity : 25;
@@ -327,6 +337,31 @@
         });
         for (var i = c.lo; i < stop; i++) keys[slots[i].pos] = key;
       });
+
+      // on the timelines the TOS films get a section of their own, running from The Motion
+      // Picture up to the next section so whatever falls between them rides along
+      if (field === 'a') return;
+
+      // the Kelvin films and their tie-ins get a named section: the run of loose entries
+      // they sit in, up to the last Kelvin film
+      var kelvin = idx.filter(function(i){ return slots[i].d.s === 'KEL' && !keys[slots[i].pos]; });
+      if (kelvin.length && KELVIN_LABEL[field]){
+        var kFrom = kelvin[0], kTo = kelvin[kelvin.length - 1];
+        while (kFrom > idx[0] && !keys[slots[kFrom - 1].pos]) kFrom--;
+        var kKey = 's:KEL|' + e;
+        runSeasons[kKey] = [{s:'KEL', n:'Kelvin'}];
+        runLabels[kKey] = KELVIN_LABEL[field];
+        for (var k = kFrom; k <= kTo; k++) if (!keys[slots[k].pos]) keys[slots[k].pos] = kKey;
+      }
+
+      var films = idx.filter(function(i){ return slots[i].d.s === 'TOS' && /^Movie/.test(slots[i].d.e) && !keys[slots[i].pos]; });
+      if (films.length < 2) return;
+      var filmKey = 's:TOS|Movies|' + e;
+      runSeasons[filmKey] = [{s:'TOS', n:'Movies'}];
+      var last = idx[idx.length - 1];
+      for (var f = films[0]; f <= last && (f <= films[films.length - 1] || !keys[slots[f].pos]); f++){
+        if (!keys[slots[f].pos]) keys[slots[f].pos] = filmKey;
+      }
     });
 
     // Episodes from seasons that never get a section of their own (Short Treks) join the
@@ -341,10 +376,20 @@
       return keys[slots[i].pos] == null && n != null && seasonSize[id] >= 3 && !sectioned[id];
     };
     var join = function(i, j){
-      if (eraOfSlot[i] === eraOfSlot[j] && drifts(i) && keys[slots[j].pos]) keys[slots[i].pos] = keys[slots[j].pos];
+      if (eraOfSlot[i] === eraOfSlot[j] && drifts(i) && keys[slots[j].pos] && !runLabels[keys[slots[j].pos]]) keys[slots[i].pos] = keys[slots[j].pos];
     };
     for (var a = 1; a < slots.length; a++) join(a, a - 1);
     for (var b = slots.length - 2; b >= 0; b--) join(b, b + 1);
+
+    // whatever is left loose right after a named section (Kelvin) belongs to the section that follows
+    for (var n = 1; n < slots.length; n++){
+      if (keys[slots[n].pos] || !runLabels[keys[slots[n - 1].pos]]) continue;
+      var end = n;
+      while (end < slots.length && !keys[slots[end].pos] && eraOfSlot[end] === eraOfSlot[n]) end++;
+      if (end < slots.length && keys[slots[end].pos] && eraOfSlot[end] === eraOfSlot[n]){
+        for (var m = n; m < end; m++) keys[slots[m].pos] = keys[slots[end].pos];
+      }
+    }
   });
 
   function eraIndex(field, pos){
@@ -392,12 +437,17 @@
     return out;
   }
 
+  function showsChanged(){
+    var defaults = defaultShows();
+    return visibleShowCodes().some(function(c){ return state.shows.has(c) !== defaults.has(c); });
+  }
+
   function isFiltered(){
-    return state.canon !== 'all' || state.hideWatched || !!state.search || visibleShowCodes().some(function(c){ return !state.shows.has(c); });
+    return state.canon !== 'all' || state.hideWatched || !!state.search || showsChanged();
   }
 
   function activeFilterCount(){
-    var hidden = visibleShowCodes().filter(function(c){ return !state.shows.has(c); }).length;
+    var hidden = showsChanged();
     return (hidden ? 1 : 0) + (state.canon !== 'all' ? 1 : 0) + (state.search ? 1 : 0) + (state.hideWatched ? 1 : 0);
   }
 
@@ -544,9 +594,10 @@
     '</button>';
   }
 
+  var MISC_SHOWS = { 'Short Trek': true };
+
   function seasonHeadHtml(run, open){
     var t = tally(run.rows);
-    var first = SHOWS[run.rows[0].s] || {color:'#888'};
     // one pill per show, with its seasons folded together: "DS9 Seasons 3 – 4"
     var byShow = [];
     runSeasons[run.key].forEach(function(x){
@@ -554,6 +605,22 @@
       if (entry) entry.n.push(x.n);
       else byShow.push({s:x.s, n:[x.n]});
     });
+    // overlapping seasons are named in a fixed order: TNG before DS9, Voyager before DS9
+    var LABEL_RANK = { TNG: 0, VOY: 1, DS9: 2 };
+    byShow.sort(function(a, b){
+      return (a.s in LABEL_RANK && b.s in LABEL_RANK) ? LABEL_RANK[a.s] - LABEL_RANK[b.s] : 0;
+    });
+    // on the timelines Short Treks are anthology odds and ends, so they read as "Misc." after the main show
+    var misc = state.order !== 'a' && byShow.length > 1 && byShow.some(function(x){ return MISC_SHOWS[x.s]; });
+    if (misc) byShow = byShow.filter(function(x){ return !MISC_SHOWS[x.s]; });
+    var first = SHOWS[byShow[0].s] || {color:'#888'};
+    if (runLabels[run.key]){
+      return '<button class="season-head' + (t.done ? ' is-done' : '') + '" data-run="' + escapeHtml(run.key) + '" aria-expanded="' + open + '" style="--show:' + first.color + '">' +
+        '<span class="era-chev" aria-hidden="true"></span>' +
+        '<span class="season-label"><span class="season-name">' + escapeHtml(runLabels[run.key]) + '</span></span>' +
+        '<span class="era-count">' + t.seen + ' / ' + t.total + '</span>' +
+      '</button>';
+    }
     var label = byShow.map(function(x){
       var show = SHOWS[x.s] || {name:x.s, color:'#888'};
       var nums = x.n.slice().sort(function(a, b){ return parseInt(a, 10) - parseInt(b, 10) || String(a).localeCompare(String(b)); });
@@ -564,7 +631,8 @@
         '<span class="show-pill" style="--show:' + show.color + '" title="' + escapeHtml(show.name) + '">' + escapeHtml(show.abbr || x.s) + '</span>' +
         '<span class="season-name">' + escapeHtml(text) + '</span>' +
       '</span>';
-    }).join('<span class="season-amp">&amp;</span>');
+    }).join('<span class="season-amp">&amp;</span>') +
+      (misc ? '<span class="season-amp">&amp;</span><span class="season-name">Misc.</span>' : '');
     return '<button class="season-head' + (t.done ? ' is-done' : '') + '" data-run="' + escapeHtml(run.key) + '" aria-expanded="' + open + '" style="--show:' + first.color + '">' +
       '<span class="era-chev" aria-hidden="true"></span>' +
       '<span class="season-label">' + label + '</span>' +
@@ -620,7 +688,7 @@
     var unique = new Set(currentList.filter(isShown).map(function(d){ return d.i; })).size;
     document.getElementById('resultCount').textContent = isFiltered()
       ? 'Showing ' + unique + ' of ' + DATA.length
-      : DATA.length + ' entries';
+      : unique + ' entries';
     document.getElementById('clearFilters').hidden = !isFiltered();
 
     var keys = groupByEra(currentList).map(function(g){ return g.era.key; });
@@ -643,8 +711,10 @@
   }
 
   function renderProgress(){
-    var total = DATA.length;
-    var watchedCount = DATA.filter(function(d){ return state.watched.has(d.i); }).length;
+    // opt-in shows only count toward progress once they're switched on
+    var counted = DATA.filter(function(d){ return !(SHOWS[d.s] && SHOWS[d.s].optIn) || state.shows.has(d.s); });
+    var total = counted.length;
+    var watchedCount = counted.filter(function(d){ return state.watched.has(d.i); }).length;
     var pct = total ? Math.round((watchedCount/total)*100) : 0;
     var circumference = 2 * Math.PI * 19;
     document.getElementById('statProgress').textContent = watchedCount + ' / ' + total;
@@ -776,7 +846,7 @@
   }
 
   function resetFilters(){
-    state.shows = new Set(Object.keys(SHOWS));
+    state.shows = defaultShows();
     state.canon = 'all';
     state.hideWatched = false;
     state.search = '';

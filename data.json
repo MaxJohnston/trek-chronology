@@ -2421,7 +2421,7 @@
     "e": "3x01",
     "t": "Hegemony, Part II",
     "c": 152,
-    "a": 955,
+    "a": 954,
     "k": "Y",
     "d": "2025-07-17",
     "dist": "Paramount Plus",
@@ -2437,7 +2437,7 @@
     "e": "3x02",
     "t": "Wedding Bell Blues",
     "c": 153,
-    "a": 956,
+    "a": 955,
     "k": "Y",
     "d": "2025-07-17",
     "dist": "Paramount Plus",
@@ -2453,7 +2453,7 @@
     "e": "3x03",
     "t": "Shuttle to Kenfori",
     "c": 154,
-    "a": 957,
+    "a": 956,
     "k": "Y",
     "d": "2025-07-24",
     "dist": "Paramount Plus",
@@ -2469,7 +2469,7 @@
     "e": "3x04",
     "t": "A Space Adventure Hour",
     "c": 155,
-    "a": 958,
+    "a": 957,
     "k": "Y",
     "d": "2025-07-31",
     "dist": "Paramount Plus",
@@ -2485,7 +2485,7 @@
     "e": "3x05",
     "t": "Through the Lens of Time",
     "c": 156,
-    "a": 959,
+    "a": 958,
     "k": "Y",
     "d": "2025-08-07",
     "dist": "Paramount Plus",
@@ -2501,7 +2501,7 @@
     "e": "3x06",
     "t": "The Sehlat Who Ate Its Tail",
     "c": 157,
-    "a": 960,
+    "a": 959,
     "k": "Y",
     "d": "2025-08-14",
     "dist": "Paramount Plus",
@@ -2517,7 +2517,7 @@
     "e": "3x07",
     "t": "What Is Starfleet?",
     "c": 158,
-    "a": 961,
+    "a": 960,
     "k": "Y",
     "d": "2025-08-21",
     "dist": "Paramount Plus",
@@ -2533,7 +2533,7 @@
     "e": "3x08",
     "t": "Four-and-a-Half Vulcans",
     "c": 159,
-    "a": 962,
+    "a": 961,
     "k": "Y",
     "d": "2025-08-28",
     "dist": "Paramount Plus",
@@ -2549,7 +2549,7 @@
     "e": "3x09",
     "t": "Terrarium",
     "c": 160,
-    "a": 963,
+    "a": 962,
     "k": "Y",
     "d": "2025-09-04",
     "dist": "Paramount Plus",
@@ -2565,7 +2565,7 @@
     "e": "3x10",
     "t": "New Life and New Civilizations",
     "c": 161,
-    "a": 966,
+    "a": 964,
     "k": "Y",
     "d": "2025-09-11",
     "dist": "Paramount Plus",
@@ -2581,7 +2581,7 @@
     "e": "4x01",
     "t": "Valles Marineris",
     "c": 162,
-    "a": 986,
+    "a": 983,
     "k": "Y",
     "d": "2026-07-23",
     "dist": "Paramount Plus",
@@ -2597,7 +2597,7 @@
     "e": "4x02",
     "t": "The Griffin Incident",
     "c": 163,
-    "a": 987,
+    "a": 984,
     "k": "Y",
     "d": "2026-07-30",
     "dist": "Paramount Plus",
@@ -2613,7 +2613,7 @@
     "e": "4x03",
     "t": "Human Best Friend",
     "c": 164,
-    "a": 988,
+    "a": 985,
     "k": "Y",
     "d": "2026-08-06",
     "dist": "Paramount Plus",
@@ -2629,7 +2629,7 @@
     "e": "4x04",
     "t": "A Case of Chiaroscuro",
     "c": 165,
-    "a": 989,
+    "a": 986,
     "k": "Y",
     "d": "2026-08-13",
     "dist": "Paramount Plus",
@@ -2645,7 +2645,7 @@
     "e": "4x05",
     "t": "Level-Five Transporter Accident",
     "c": 166,
-    "a": 990,
+    "a": 987,
     "k": "Y",
     "d": "2026-08-20",
     "dist": "Paramount Plus",
@@ -2661,7 +2661,7 @@
     "e": "4x06",
     "t": "Off-Hour",
     "c": 167,
-    "a": 991,
+    "a": 988,
     "k": "Y",
     "d": "2026-08-27",
     "dist": "Paramount Plus",
@@ -2677,7 +2677,7 @@
     "e": "4x07",
     "t": "Like Chronitons Through the Hourglass",
     "c": 168,
-    "a": 992,
+    "a": 989,
     "k": "Y",
     "d": "2026-09-03",
     "dist": "Paramount Plus",
@@ -2693,7 +2693,7 @@
     "e": "4x08",
     "t": "Orders of Magnitude",
     "c": 169,
-    "a": 993,
+    "a": 990,
     "k": "Y",
     "d": "2026-09-10",
     "dist": "Paramount Plus",
@@ -2709,7 +2709,7 @@
     "e": "4x09",
     "t": "Once La'an a Time",
     "c": 170,
-    "a": 994,
+    "a": 991,
     "k": "Y",
     "d": "2026-09-17",
     "dist": "Paramount Plus",
@@ -2725,7 +2725,7 @@
     "e": "4x10",
     "t": "Tomorrow's Enterprise",
     "c": 171,
-    "a": 995,
+    "a": 992,
     "k": "Y",
     "d": "2026-09-24",
     "dist": "Paramount Plus",
@@ -4501,7 +4501,7 @@
     "e": "1x01",
     "t": "Paradise",
     "c": 282,
-    "a": 964,
+    "a": 963,
     "k": "Y?",
     "d": "2025-09-08",
     "dist": "Podcast/Audio",
@@ -4517,7 +4517,7 @@
     "e": "1x02",
     "t": "Scheherazade",
     "c": 283,
-    "a": 967,
+    "a": 965,
     "k": "Y?",
     "d": "2025-09-15",
     "dist": "Podcast/Audio",
@@ -4533,7 +4533,7 @@
     "e": "1x03",
     "t": "Do Your Worst",
     "c": 284,
-    "a": 968,
+    "a": 966,
     "k": "Y?",
     "d": "2025-09-22",
     "dist": "Podcast/Audio",
@@ -4549,7 +4549,7 @@
     "e": "1x04",
     "t": "Magical Thinking",
     "c": 285,
-    "a": 969,
+    "a": 967,
     "k": "Y?",
     "d": "2025-09-29",
     "dist": "Podcast/Audio",
@@ -4565,7 +4565,7 @@
     "e": "1x05",
     "t": "Imagination's Limits",
     "c": 286,
-    "a": 970,
+    "a": 968,
     "k": "Y?",
     "d": "2025-10-06",
     "dist": "Podcast/Audio",
@@ -4581,7 +4581,7 @@
     "e": "1x06",
     "t": "The Good of All",
     "c": 287,
-    "a": 971,
+    "a": 969,
     "k": "Y?",
     "d": "2025-10-13",
     "dist": "Podcast/Audio",
@@ -4597,7 +4597,7 @@
     "e": "1x07",
     "t": "I Am Marla",
     "c": 288,
-    "a": 972,
+    "a": 970,
     "k": "Y?",
     "d": "2025-10-20",
     "dist": "Podcast/Audio",
@@ -4613,7 +4613,7 @@
     "e": "1x08",
     "t": "Original Sin",
     "c": 289,
-    "a": 973,
+    "a": 971,
     "k": "Y?",
     "d": "2025-10-27",
     "dist": "Podcast/Audio",
@@ -4629,7 +4629,7 @@
     "e": "1x09",
     "t": "Eternity's Face",
     "c": 290,
-    "a": 974,
+    "a": 972,
     "k": "Y?",
     "d": "2025-11-03",
     "dist": "Podcast/Audio",
@@ -13510,7 +13510,7 @@
     "e": "4x03",
     "t": "In the Cradle of Vexilon",
     "c": 845,
-    "a": 905,
+    "a": 904,
     "k": "Y",
     "d": "2023-09-14",
     "dist": "Paramount Plus",
@@ -13526,7 +13526,7 @@
     "e": "4x04",
     "t": "Something Borrowed, Something Green",
     "c": 846,
-    "a": 906,
+    "a": 905,
     "k": "Y",
     "d": "2023-09-21",
     "dist": "Paramount Plus",
@@ -13542,7 +13542,7 @@
     "e": "4x05",
     "t": "Empathological Fallacies",
     "c": 847,
-    "a": 907,
+    "a": 906,
     "k": "Y",
     "d": "2023-09-28",
     "dist": "Paramount Plus",
@@ -13558,7 +13558,7 @@
     "e": "4x06",
     "t": "Parth Ferengi's Heart Place",
     "c": 848,
-    "a": 908,
+    "a": 907,
     "k": "Y",
     "d": "2023-10-05",
     "dist": "Paramount Plus",
@@ -13574,7 +13574,7 @@
     "e": "4x07",
     "t": "A Few Badgeys More",
     "c": 849,
-    "a": 909,
+    "a": 908,
     "k": "Y",
     "d": "2023-10-12",
     "dist": "Paramount Plus",
@@ -13590,7 +13590,7 @@
     "e": "4x08",
     "t": "Caves",
     "c": 850,
-    "a": 910,
+    "a": 909,
     "k": "Y",
     "d": "2023-10-19",
     "dist": "Paramount Plus",
@@ -13606,7 +13606,7 @@
     "e": "4x09",
     "t": "The Inner Fight",
     "c": 851,
-    "a": 911,
+    "a": 910,
     "k": "Y",
     "d": "2023-10-26",
     "dist": "Paramount Plus",
@@ -13622,7 +13622,7 @@
     "e": "4x10",
     "t": "Old Friends, New Planets",
     "c": 852,
-    "a": 912,
+    "a": 911,
     "k": "Y",
     "d": "2023-11-02",
     "dist": "Paramount Plus",
@@ -13638,7 +13638,7 @@
     "e": "5x01",
     "t": "Dos Cerritos",
     "c": 853,
-    "a": 943,
+    "a": 942,
     "k": "Y",
     "d": "2024-10-24",
     "dist": "Paramount Plus",
@@ -13654,7 +13654,7 @@
     "e": "5x02",
     "t": "Shades of Green",
     "c": 854,
-    "a": 944,
+    "a": 943,
     "k": "Y",
     "d": "2024-10-24",
     "dist": "Paramount Plus",
@@ -13670,7 +13670,7 @@
     "e": "5x03",
     "t": "The Best Exotic Nanite Hotel",
     "c": 855,
-    "a": 945,
+    "a": 944,
     "k": "Y",
     "d": "2024-10-31",
     "dist": "Paramount Plus",
@@ -13686,7 +13686,7 @@
     "e": "5x04",
     "t": "A Farewell To Farms",
     "c": 856,
-    "a": 946,
+    "a": 945,
     "k": "Y",
     "d": "2024-11-07",
     "dist": "Paramount Plus",
@@ -13702,7 +13702,7 @@
     "e": "5x05",
     "t": "Starbase 80?!",
     "c": 857,
-    "a": 947,
+    "a": 946,
     "k": "Y",
     "d": "2024-11-14",
     "dist": "Paramount Plus",
@@ -13718,7 +13718,7 @@
     "e": "5x06",
     "t": "Of Gods and Angles",
     "c": 858,
-    "a": 949,
+    "a": 948,
     "k": "Y",
     "d": "2024-11-21",
     "dist": "Paramount Plus",
@@ -13734,7 +13734,7 @@
     "e": "5x07",
     "t": "Fully Dilated",
     "c": 859,
-    "a": 950,
+    "a": 949,
     "k": "Y",
     "d": "2024-11-28",
     "dist": "Paramount Plus",
@@ -13750,7 +13750,7 @@
     "e": "5x08",
     "t": "Upper Decks",
     "c": 860,
-    "a": 951,
+    "a": 950,
     "k": "Y",
     "d": "2024-12-05",
     "dist": "Paramount Plus",
@@ -13766,7 +13766,7 @@
     "e": "5x09",
     "t": "Fissure Quest",
     "c": 861,
-    "a": 952,
+    "a": 951,
     "k": "Y",
     "d": "2024-12-12",
     "dist": "Paramount Plus",
@@ -13782,7 +13782,7 @@
     "e": "5x10",
     "t": "The New Next Generation",
     "c": 862,
-    "a": 953,
+    "a": 952,
     "k": "Y",
     "d": "2024-12-19",
     "dist": "Paramount Plus",
@@ -13797,8 +13797,8 @@
     "s": "SCO",
     "e": "1x1-10",
     "t": "Star Trek: Scouts Season 1",
-    "c": 863,
-    "a": 965,
+    "c": 862.1,
+    "a": 963.5,
     "k": "N",
     "d": "2025-09-08",
     "dist": "Youtube/Nick Jr.",
@@ -13806,15 +13806,15 @@
     "y": "",
     "n": "Show for toddlers. Air date listed is premiere date.",
     "url": "https://memory-alpha.fandom.com/wiki/Star_Trek:_Scouts",
-    "tt": 880
+    "tt": 879.1
   },
   {
     "i": 863,
     "s": "SCO",
     "e": "2x1-10",
     "t": "Star Trek: Scouts Season 2",
-    "c": 864,
-    "a": 978,
+    "c": 862.2,
+    "a": 975.5,
     "k": "N",
     "d": "2026-01-23",
     "dist": "Youtube/Nick Jr.",
@@ -13822,14 +13822,14 @@
     "y": "",
     "n": "Show for toddlers. Air date listed is premiere date.",
     "url": "https://memory-alpha.fandom.com/wiki/Star_Trek:_Scouts",
-    "tt": 881
+    "tt": 879.2
   },
   {
     "i": 864,
     "s": "PRO",
     "e": "1x01/02",
     "t": "Lost and Found",
-    "c": 866,
+    "c": 863,
     "a": 817,
     "k": "Y",
     "d": "2021-10-28",
@@ -13838,14 +13838,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Lost_and_Found_(episode)",
-    "tt": 883
+    "tt": 880
   },
   {
     "i": 865,
     "s": "PRO",
     "e": "1x03",
     "t": "Starstruck",
-    "c": 867,
+    "c": 864,
     "a": 818,
     "k": "Y",
     "d": "2021-10-28",
@@ -13854,14 +13854,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Starstruck_(episode)",
-    "tt": 884
+    "tt": 881
   },
   {
     "i": 866,
     "s": "PRO",
     "e": "1x04",
     "t": "Dream Catcher",
-    "c": 868,
+    "c": 865,
     "a": 819,
     "k": "Y",
     "d": "2021-10-28",
@@ -13870,14 +13870,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Dream_Catcher_(episode)",
-    "tt": 885
+    "tt": 882
   },
   {
     "i": 867,
     "s": "PRO",
     "e": "1x05",
     "t": "Terror Firma",
-    "c": 869,
+    "c": 866,
     "a": 820,
     "k": "Y",
     "d": "2021-10-28",
@@ -13886,14 +13886,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Terror_Firma_(episode)",
-    "tt": 886
+    "tt": 883
   },
   {
     "i": 868,
     "s": "PRO",
     "e": "1x06",
     "t": "Kobayashi",
-    "c": 870,
+    "c": 867,
     "a": 828,
     "k": "Y",
     "d": "2022-01-06",
@@ -13902,14 +13902,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Kobayashi_(episode)",
-    "tt": 887
+    "tt": 884
   },
   {
     "i": 869,
     "s": "PRO",
     "e": "1x07",
     "t": "First Con-tact",
-    "c": 871,
+    "c": 868,
     "a": 829,
     "k": "Y",
     "d": "2022-01-13",
@@ -13918,14 +13918,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/First_Con-tact_(episode)",
-    "tt": 888
+    "tt": 885
   },
   {
     "i": 870,
     "s": "PRO",
     "e": "1x08",
     "t": "Time Amok",
-    "c": 872,
+    "c": 869,
     "a": 830,
     "k": "Y",
     "d": "2022-01-20",
@@ -13934,14 +13934,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Time_Amok_(episode)",
-    "tt": 889
+    "tt": 886
   },
   {
     "i": 871,
     "s": "PRO",
     "e": "1x09",
     "t": "A Moral Star, Part 1",
-    "c": 873,
+    "c": 870,
     "a": 831,
     "k": "Y",
     "d": "2022-01-27",
@@ -13950,14 +13950,14 @@
     "y": 2383,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/A_Moral_Star,_Part_1_(episode)",
-    "tt": 890
+    "tt": 887
   },
   {
     "i": 872,
     "s": "PRO",
     "e": "1x10",
     "t": "A Moral Star, Part 2",
-    "c": 874,
+    "c": 871,
     "a": 832,
     "k": "Y",
     "d": "2022-02-03",
@@ -13966,14 +13966,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/A_Moral_Star,_Part_2_(episode)",
-    "tt": 891
+    "tt": 888
   },
   {
     "i": 873,
     "s": "PRO",
     "e": "1x11",
     "t": "Asylum",
-    "c": 875,
+    "c": 872,
     "a": 871,
     "k": "Y",
     "d": "2022-10-26",
@@ -13982,14 +13982,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Asylum_(episode)",
-    "tt": 892
+    "tt": 889
   },
   {
     "i": 874,
     "s": "PRO",
     "e": "1x12",
     "t": "Let Sleeping Borg Lie",
-    "c": 876,
+    "c": 873,
     "a": 872,
     "k": "Y",
     "d": "2022-11-03",
@@ -13998,14 +13998,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Let_Sleeping_Borg_Lie_(episode)",
-    "tt": 893
+    "tt": 890
   },
   {
     "i": 875,
     "s": "PRO",
     "e": "1x13",
     "t": "All the World's a Stage",
-    "c": 877,
+    "c": 874,
     "a": 873,
     "k": "Y",
     "d": "2022-11-09",
@@ -14014,14 +14014,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/All_the_World%27s_a_Stage_(episode)",
-    "tt": 894
+    "tt": 891
   },
   {
     "i": 876,
     "s": "PRO",
     "e": "1x14",
     "t": "Crossroads",
-    "c": 878,
+    "c": 875,
     "a": 874,
     "k": "Y",
     "d": "2022-11-16",
@@ -14030,14 +14030,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Crossroads_(episode)",
-    "tt": 895
+    "tt": 892
   },
   {
     "i": 877,
     "s": "PRO",
     "e": "1x15",
     "t": "Masquerade",
-    "c": 879,
+    "c": 876,
     "a": 875,
     "k": "Y",
     "d": "2022-11-23",
@@ -14046,14 +14046,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Masquerade_(episode)",
-    "tt": 896
+    "tt": 893
   },
   {
     "i": 878,
     "s": "PRO",
     "e": "1x16",
     "t": "Preludes",
-    "c": 880,
+    "c": 877,
     "a": 876,
     "k": "Y",
     "d": "2022-12-01",
@@ -14062,14 +14062,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Preludes_(episode)",
-    "tt": 897
+    "tt": 894
   },
   {
     "i": 879,
     "s": "PRO",
     "e": "1x17",
     "t": "Ghost in the Machine",
-    "c": 881,
+    "c": 878,
     "a": 877,
     "k": "Y",
     "d": "2022-12-07",
@@ -14078,14 +14078,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ghost_in_the_Machine_(episode)",
-    "tt": 898
+    "tt": 895
   },
   {
     "i": 880,
     "s": "PRO",
     "e": "1x18",
     "t": "Mindwalk",
-    "c": 882,
+    "c": 879,
     "a": 878,
     "k": "Y",
     "d": "2022-12-14",
@@ -14094,14 +14094,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Mindwalk_(episode)",
-    "tt": 899
+    "tt": 896
   },
   {
     "i": 881,
     "s": "PRO",
     "e": "1x19",
     "t": "Supernova, Part 1",
-    "c": 883,
+    "c": 880,
     "a": 879,
     "k": "Y",
     "d": "2022-12-21",
@@ -14110,14 +14110,14 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Supernova,_Part_1_(episode)",
-    "tt": 900
+    "tt": 897
   },
   {
     "i": 882,
     "s": "PRO",
     "e": "1x20",
     "t": "Supernova, Part 2",
-    "c": 884,
+    "c": 881,
     "a": 880,
     "k": "Y",
     "d": "2022-12-28",
@@ -14126,15 +14126,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Supernova,_Part_2_(episode)",
-    "tt": 901
+    "tt": 898
   },
   {
     "i": 883,
     "s": "Very Short Treks",
     "e": "1x01-1x05",
     "t": "Very Short Treks",
-    "c": 885,
-    "a": 904,
+    "c": 881.5,
+    "a": 903.5,
     "k": "N",
     "d": "2023-09-08",
     "dist": "Youtube",
@@ -14142,15 +14142,15 @@
     "y": "",
     "n": "",
     "url": "https://www.youtube.com/playlist?list=PLufIO1FTWFz_8X1Tmh3BAlJpqNadViR-E",
-    "tt": 902
+    "tt": 898.5
   },
   {
     "i": 884,
     "s": "PRO",
     "e": "2x01",
     "t": "Into the Breach, Part I",
-    "c": 886,
-    "a": 923,
+    "c": 882,
+    "a": 922,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14158,15 +14158,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Into_the_Breach,_Part_I_(episode)",
-    "tt": 903
+    "tt": 899
   },
   {
     "i": 885,
     "s": "PRO",
     "e": "2x02",
     "t": "Into the Breach, Part II",
-    "c": 887,
-    "a": 924,
+    "c": 883,
+    "a": 923,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14174,15 +14174,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Into_the_Breach,_Part_II_(episode)",
-    "tt": 904
+    "tt": 900
   },
   {
     "i": 886,
     "s": "PRO",
     "e": "2x03",
     "t": "Who Saves the Saviors",
-    "c": 888,
-    "a": 925,
+    "c": 884,
+    "a": 924,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14190,15 +14190,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Who_Saves_the_Saviors_(episode)",
-    "tt": 905
+    "tt": 901
   },
   {
     "i": 887,
     "s": "PRO",
     "e": "2x04",
     "t": "Temporal Mechanics 101",
-    "c": 889,
-    "a": 926,
+    "c": 885,
+    "a": 925,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14206,15 +14206,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Temporal_Mechanics_101_(episode)",
-    "tt": 906
+    "tt": 902
   },
   {
     "i": 888,
     "s": "PRO",
     "e": "2x05",
     "t": "Observer's Paradox",
-    "c": 890,
-    "a": 927,
+    "c": 886,
+    "a": 926,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14222,15 +14222,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Observer%27s_Paradox_(episode)",
-    "tt": 907
+    "tt": 903
   },
   {
     "i": 889,
     "s": "PRO",
     "e": "2x06",
     "t": "Imposter Syndrome",
-    "c": 891,
-    "a": 928,
+    "c": 887,
+    "a": 927,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14238,15 +14238,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Imposter_Syndrome_(episode)",
-    "tt": 908
+    "tt": 904
   },
   {
     "i": 890,
     "s": "PRO",
     "e": "2x07",
     "t": "The Fast and the Curious",
-    "c": 892,
-    "a": 929,
+    "c": 888,
+    "a": 928,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14254,15 +14254,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Fast_and_the_Curious_(episode)",
-    "tt": 909
+    "tt": 905
   },
   {
     "i": 891,
     "s": "PRO",
     "e": "2x08",
     "t": "Is There in Beauty No Truth?",
-    "c": 893,
-    "a": 930,
+    "c": 889,
+    "a": 929,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14270,15 +14270,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Is_There_in_Beauty_No_Truth%3F_(episode)",
-    "tt": 910
+    "tt": 906
   },
   {
     "i": 892,
     "s": "PRO",
     "e": "2x09",
     "t": "The Devourer of All Things, Part I",
-    "c": 894,
-    "a": 931,
+    "c": 890,
+    "a": 930,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14286,15 +14286,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Devourer_of_All_Things,_Part_I_(episode)",
-    "tt": 911
+    "tt": 907
   },
   {
     "i": 893,
     "s": "PRO",
     "e": "2x10",
     "t": "The Devourer of All Things, Part II",
-    "c": 895,
-    "a": 932,
+    "c": 891,
+    "a": 931,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14302,15 +14302,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Devourer_of_All_Things,_Part_II_(episode)",
-    "tt": 912
+    "tt": 908
   },
   {
     "i": 894,
     "s": "PRO",
     "e": "2x11",
     "t": "Last Flight of the Protostar, Part I",
-    "c": 896,
-    "a": 933,
+    "c": 892,
+    "a": 932,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14318,15 +14318,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Last_Flight_of_the_Protostar,_Part_I_(episode)",
-    "tt": 913
+    "tt": 909
   },
   {
     "i": 895,
     "s": "PRO",
     "e": "2x12",
     "t": "Last Flight of the Protostar, Part II",
-    "c": 897,
-    "a": 934,
+    "c": 893,
+    "a": 933,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14334,15 +14334,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Last_Flight_of_the_Protostar,_Part_II_(episode)",
-    "tt": 914
+    "tt": 910
   },
   {
     "i": 896,
     "s": "PRO",
     "e": "2x13",
     "t": "A Tribble Called Quest",
-    "c": 898,
-    "a": 935,
+    "c": 894,
+    "a": 934,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14350,15 +14350,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/A_Tribble_Called_Quest_(episode)",
-    "tt": 915
+    "tt": 911
   },
   {
     "i": 897,
     "s": "PRO",
     "e": "2x14",
     "t": "Cracked Mirror",
-    "c": 899,
-    "a": 936,
+    "c": 895,
+    "a": 935,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14366,15 +14366,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Cracked_Mirror_(episode)",
-    "tt": 916
+    "tt": 912
   },
   {
     "i": 898,
     "s": "PRO",
     "e": "2x15",
     "t": "Ascension, Part I",
-    "c": 900,
-    "a": 937,
+    "c": 896,
+    "a": 936,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14382,15 +14382,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ascension,_Part_I_(episode)",
-    "tt": 917
+    "tt": 913
   },
   {
     "i": 899,
     "s": "PRO",
     "e": "2x16",
     "t": "Ascension, Part II",
-    "c": 901,
-    "a": 938,
+    "c": 897,
+    "a": 937,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14398,15 +14398,15 @@
     "y": 2384,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ascension,_Part_II_(episode)",
-    "tt": 918
+    "tt": 914
   },
   {
     "i": 900,
     "s": "PRO",
     "e": "2x17",
     "t": "Brink",
-    "c": 902,
-    "a": 939,
+    "c": 898,
+    "a": 938,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14414,15 +14414,15 @@
     "y": 2385,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Brink_(episode)",
-    "tt": 919
+    "tt": 915
   },
   {
     "i": 901,
     "s": "PRO",
     "e": "2x18",
     "t": "Touch of Grey",
-    "c": 903,
-    "a": 940,
+    "c": 899,
+    "a": 939,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14430,15 +14430,15 @@
     "y": 2385,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Touch_of_Grey_(episode)",
-    "tt": 920
+    "tt": 916
   },
   {
     "i": 902,
     "s": "PRO",
     "e": "2x19",
     "t": "Ouroboros, Part I",
-    "c": 904,
-    "a": 941,
+    "c": 900,
+    "a": 940,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14446,15 +14446,15 @@
     "y": 2385,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ouroboros,_Part_I_(episode)",
-    "tt": 921
+    "tt": 917
   },
   {
     "i": 903,
     "s": "PRO",
     "e": "2x20",
     "t": "Ouroboros, Part II",
-    "c": 905,
-    "a": 942,
+    "c": 901,
+    "a": 941,
     "k": "Y",
     "d": "2024-07-01",
     "dist": "Netflix",
@@ -14462,14 +14462,14 @@
     "y": 2385,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ouroboros,_Part_II_(episode)",
-    "tt": 922
+    "tt": 918
   },
   {
     "i": 904,
     "s": "Short Trek",
     "e": "2x06",
     "t": "Children of Mars",
-    "c": 906,
+    "c": 902,
     "a": 772,
     "k": "Y",
     "d": "2020-01-09",
@@ -14478,14 +14478,14 @@
     "y": 2385,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Children_of_Mars_(episode)",
-    "tt": 923
+    "tt": 919
   },
   {
     "i": 905,
     "s": "Comic",
     "e": "",
     "t": "Picard: Countdown",
-    "c": 907,
+    "c": 903,
     "a": 774,
     "k": "M",
     "d": "2020-01-29",
@@ -14494,14 +14494,14 @@
     "y": 2386,
     "n": "",
     "url": "https://memory-beta.fandom.com/wiki/Picard:_Countdown",
-    "tt": 924
+    "tt": 920
   },
   {
     "i": 906,
     "s": "Comic",
     "e": "",
     "t": "Countdown",
-    "c": 908,
+    "c": 904,
     "a": 727,
     "k": "R",
     "d": "2009-04-01",
@@ -14510,14 +14510,14 @@
     "y": 2387,
     "n": "",
     "url": "https://memory-beta.fandom.com/wiki/Star_Trek:_Countdown",
-    "tt": 925
+    "tt": 921
   },
   {
     "i": 907,
     "s": "Comic",
     "e": "",
     "t": "Nero",
-    "c": 909,
+    "c": 905,
     "a": 729,
     "k": "M",
     "d": "2009-11-25",
@@ -14533,7 +14533,7 @@
     "s": "KEL",
     "e": "Movie 11",
     "t": "Star Trek",
-    "c": 910,
+    "c": 906,
     "a": 728,
     "k": "B",
     "d": "2009-05-08",
@@ -14549,7 +14549,7 @@
     "s": "Comic",
     "e": "",
     "t": "Countdown to Darkness",
-    "c": 911,
+    "c": 907,
     "a": 730,
     "k": "M",
     "d": "2013-04-10",
@@ -14565,7 +14565,7 @@
     "s": "KEL",
     "e": "Movie 12",
     "t": "Star Trek Into Darkness",
-    "c": 912,
+    "c": 908,
     "a": 731,
     "k": "B",
     "d": "2013-05-16",
@@ -14581,7 +14581,7 @@
     "s": "Comic",
     "e": "",
     "t": "Khan",
-    "c": 913,
+    "c": 909,
     "a": 732,
     "k": "M",
     "d": "2014-02-26",
@@ -14597,8 +14597,8 @@
     "s": "Short",
     "e": "",
     "t": "765874 - Unification",
-    "c": 914,
-    "a": 948,
+    "c": 910,
+    "a": 947,
     "k": "?",
     "d": "2024-11-17",
     "dist": "Youtube",
@@ -14613,7 +14613,7 @@
     "s": "KEL",
     "e": "Movie 13",
     "t": "Star Trek Beyond",
-    "c": 915,
+    "c": 911,
     "a": 733,
     "k": "B",
     "d": "2016-07-22",
@@ -14629,7 +14629,7 @@
     "s": "PIC",
     "e": "1x01",
     "t": "Remembrance",
-    "c": 916,
+    "c": 912,
     "a": 773,
     "k": "Y",
     "d": "2020-01-23",
@@ -14638,14 +14638,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Remembrance_(episode)",
-    "tt": 926
+    "tt": 922
   },
   {
     "i": 915,
     "s": "PIC",
     "e": "1x02",
     "t": "Maps and Legends",
-    "c": 917,
+    "c": 913,
     "a": 775,
     "k": "Y",
     "d": "2020-01-30",
@@ -14654,14 +14654,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Maps_and_Legends_(episode)",
-    "tt": 927
+    "tt": 923
   },
   {
     "i": 916,
     "s": "PIC",
     "e": "1x03",
     "t": "The End is the Beginning",
-    "c": 918,
+    "c": 914,
     "a": 776,
     "k": "Y",
     "d": "2020-02-06",
@@ -14670,14 +14670,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_End_is_the_Beginning_(episode)",
-    "tt": 928
+    "tt": 924
   },
   {
     "i": 917,
     "s": "PIC",
     "e": "1x04",
     "t": "Absolute Candor",
-    "c": 919,
+    "c": 915,
     "a": 777,
     "k": "Y",
     "d": "2020-02-13",
@@ -14686,14 +14686,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Absolute_Candor_(episode)",
-    "tt": 929
+    "tt": 925
   },
   {
     "i": 918,
     "s": "PIC",
     "e": "1x05",
     "t": "Stardust City Rag",
-    "c": 920,
+    "c": 916,
     "a": 778,
     "k": "Y",
     "d": "2020-02-20",
@@ -14702,14 +14702,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Stardust_City_Rag_(episode)",
-    "tt": 930
+    "tt": 926
   },
   {
     "i": 919,
     "s": "PIC",
     "e": "1x06",
     "t": "The Impossible Box",
-    "c": 921,
+    "c": 917,
     "a": 779,
     "k": "Y",
     "d": "2020-02-27",
@@ -14718,14 +14718,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Impossible_Box_(episode)",
-    "tt": 931
+    "tt": 927
   },
   {
     "i": 920,
     "s": "PIC",
     "e": "1x07",
     "t": "Nepenthe",
-    "c": 922,
+    "c": 918,
     "a": 780,
     "k": "Y",
     "d": "2020-03-05",
@@ -14734,14 +14734,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Nepenthe_(episode)",
-    "tt": 932
+    "tt": 928
   },
   {
     "i": 921,
     "s": "PIC",
     "e": "1x08",
     "t": "Broken Pieces",
-    "c": 923,
+    "c": 919,
     "a": 781,
     "k": "Y",
     "d": "2020-03-12",
@@ -14750,14 +14750,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Broken_Pieces_(episode)",
-    "tt": 933
+    "tt": 929
   },
   {
     "i": 922,
     "s": "PIC",
     "e": "1x09",
     "t": "Et in Arcadia Ego, Part 1",
-    "c": 924,
+    "c": 920,
     "a": 782,
     "k": "Y",
     "d": "2020-03-19",
@@ -14766,14 +14766,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Et_in_Arcadia_Ego,_Part_1_(episode)",
-    "tt": 934
+    "tt": 930
   },
   {
     "i": 923,
     "s": "PIC",
     "e": "1x10",
     "t": "Et in Arcadia Ego, Part 2",
-    "c": 925,
+    "c": 921,
     "a": 783,
     "k": "Y",
     "d": "2020-03-26",
@@ -14782,14 +14782,14 @@
     "y": 2399,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Et_in_Arcadia_Ego,_Part_2_(episode)",
-    "tt": 935
+    "tt": 931
   },
   {
     "i": 924,
     "s": "PIC",
     "e": "2x01",
     "t": "The Star Gazer",
-    "c": 926,
+    "c": 922,
     "a": 837,
     "k": "Y",
     "d": "2022-03-02",
@@ -14798,14 +14798,14 @@
     "y": 2401,
     "n": "Time travel to 2020s",
     "url": "https://memory-alpha.fandom.com/wiki/The_Star_Gazer_(episode)",
-    "tt": 936
+    "tt": 932
   },
   {
     "i": 925,
     "s": "PIC",
     "e": "2x02",
     "t": "Penance",
-    "c": 927,
+    "c": 923,
     "a": 839,
     "k": "Y",
     "d": "2022-03-09",
@@ -14814,14 +14814,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Penance_(episode)",
-    "tt": 937
+    "tt": 933
   },
   {
     "i": 926,
     "s": "PIC",
     "e": "2x03",
     "t": "Assimilation",
-    "c": 928,
+    "c": 924,
     "a": 841,
     "k": "Y",
     "d": "2022-03-16",
@@ -14837,7 +14837,7 @@
     "s": "PIC",
     "e": "2x04",
     "t": "Watcher",
-    "c": 929,
+    "c": 925,
     "a": 842,
     "k": "Y",
     "d": "2022-03-23",
@@ -14853,7 +14853,7 @@
     "s": "PIC",
     "e": "2x05",
     "t": "Fly Me to the Moon",
-    "c": 930,
+    "c": 926,
     "a": 843,
     "k": "Y",
     "d": "2022-03-30",
@@ -14869,7 +14869,7 @@
     "s": "PIC",
     "e": "2x06",
     "t": "Two of One",
-    "c": 931,
+    "c": 927,
     "a": 844,
     "k": "Y",
     "d": "2022-04-06",
@@ -14885,7 +14885,7 @@
     "s": "PIC",
     "e": "2x07",
     "t": "Monsters",
-    "c": 932,
+    "c": 928,
     "a": 845,
     "k": "Y",
     "d": "2022-04-13",
@@ -14901,7 +14901,7 @@
     "s": "PIC",
     "e": "2x08",
     "t": "Mercy",
-    "c": 933,
+    "c": 929,
     "a": 846,
     "k": "Y",
     "d": "2022-04-20",
@@ -14917,7 +14917,7 @@
     "s": "PIC",
     "e": "2x09",
     "t": "Hide and Seek",
-    "c": 934,
+    "c": 930,
     "a": 847,
     "k": "Y",
     "d": "2022-04-27",
@@ -14933,7 +14933,7 @@
     "s": "PIC",
     "e": "2x10",
     "t": "Farewell",
-    "c": 935,
+    "c": 931,
     "a": 849,
     "k": "Y",
     "d": "2022-05-04",
@@ -14949,7 +14949,7 @@
     "s": "PIC",
     "e": "3x01",
     "t": "The Next Generation",
-    "c": 936,
+    "c": 932,
     "a": 881,
     "k": "Y",
     "d": "2023-02-16",
@@ -14958,14 +14958,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Next_Generation_(episode)",
-    "tt": 938
+    "tt": 934
   },
   {
     "i": 935,
     "s": "PIC",
     "e": "3x02",
     "t": "Disengage",
-    "c": 937,
+    "c": 933,
     "a": 882,
     "k": "Y",
     "d": "2023-02-23",
@@ -14974,14 +14974,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Disengage_(episode)",
-    "tt": 939
+    "tt": 935
   },
   {
     "i": 936,
     "s": "PIC",
     "e": "3x03",
     "t": "Seventeen Seconds",
-    "c": 938,
+    "c": 934,
     "a": 883,
     "k": "Y",
     "d": "2023-03-02",
@@ -14990,14 +14990,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Seventeen_Seconds_(episode)",
-    "tt": 940
+    "tt": 936
   },
   {
     "i": 937,
     "s": "PIC",
     "e": "3x04",
     "t": "No Win Scenario",
-    "c": 939,
+    "c": 935,
     "a": 884,
     "k": "Y",
     "d": "2023-03-09",
@@ -15006,14 +15006,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/No_Win_Scenario_(episode)",
-    "tt": 941
+    "tt": 937
   },
   {
     "i": 938,
     "s": "PIC",
     "e": "3x05",
     "t": "Imposters",
-    "c": 940,
+    "c": 936,
     "a": 885,
     "k": "Y",
     "d": "2023-03-16",
@@ -15022,14 +15022,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Imposters_(episode)",
-    "tt": 942
+    "tt": 938
   },
   {
     "i": 939,
     "s": "PIC",
     "e": "3x06",
     "t": "The Bounty",
-    "c": 941,
+    "c": 937,
     "a": 886,
     "k": "Y",
     "d": "2023-03-23",
@@ -15038,14 +15038,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Bounty_(episode)",
-    "tt": 943
+    "tt": 939
   },
   {
     "i": 940,
     "s": "PIC",
     "e": "3x07",
     "t": "Dominion",
-    "c": 942,
+    "c": 938,
     "a": 887,
     "k": "Y",
     "d": "2023-03-30",
@@ -15054,14 +15054,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Dominion_(episode)",
-    "tt": 944
+    "tt": 940
   },
   {
     "i": 941,
     "s": "PIC",
     "e": "3x08",
     "t": "Surrender",
-    "c": 943,
+    "c": 939,
     "a": 888,
     "k": "Y",
     "d": "2023-04-06",
@@ -15070,14 +15070,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Surrender_(episode)",
-    "tt": 945
+    "tt": 941
   },
   {
     "i": 942,
     "s": "PIC",
     "e": "3x09",
     "t": "V\u00f5x",
-    "c": 944,
+    "c": 940,
     "a": 889,
     "k": "Y",
     "d": "2023-04-13",
@@ -15086,14 +15086,14 @@
     "y": 2401,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/V%C3%B5x_(episode)",
-    "tt": 946
+    "tt": 942
   },
   {
     "i": 943,
     "s": "PIC",
     "e": "3x10",
     "t": "The Last Generation",
-    "c": 945,
+    "c": 941,
     "a": 890,
     "k": "Y",
     "d": "2023-04-20",
@@ -15102,14 +15102,14 @@
     "y": "2401-2402",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Last_Generation_(episode)",
-    "tt": 947
+    "tt": 943
   },
   {
     "i": 944,
     "s": "VOY",
     "e": "4x23",
     "t": "Living Witness",
-    "c": 946,
+    "c": 942,
     "a": 519,
     "k": "Y",
     "d": "1998-04-29",
@@ -15118,14 +15118,14 @@
     "y": 3074,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Living_Witness_(episode)",
-    "tt": 948
+    "tt": 944
   },
   {
     "i": 945,
     "s": "DSC",
     "e": "3x01",
     "t": "That Hope Is You, Part 1",
-    "c": 947,
+    "c": 943,
     "a": 794,
     "k": "Y",
     "d": "2020-10-15",
@@ -15134,14 +15134,14 @@
     "y": 3188,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/That_Hope_Is_You,_Part_1_(episode)",
-    "tt": 949
+    "tt": 945
   },
   {
     "i": 946,
     "s": "DSC",
     "e": "3x02",
     "t": "Far From Home",
-    "c": 948,
+    "c": 944,
     "a": 795,
     "k": "Y",
     "d": "2020-10-22",
@@ -15150,14 +15150,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Far_From_Home_(episode)",
-    "tt": 950
+    "tt": 946
   },
   {
     "i": 947,
     "s": "DSC",
     "e": "3x03",
     "t": "People of Earth",
-    "c": 949,
+    "c": 945,
     "a": 796,
     "k": "Y",
     "d": "2020-10-29",
@@ -15166,14 +15166,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/People_of_Earth_(episode)",
-    "tt": 951
+    "tt": 947
   },
   {
     "i": 948,
     "s": "DSC",
     "e": "3x04",
     "t": "Forget Me Not",
-    "c": 950,
+    "c": 946,
     "a": 797,
     "k": "Y",
     "d": "2020-11-05",
@@ -15182,14 +15182,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Forget_Me_Not_(episode)",
-    "tt": 952
+    "tt": 948
   },
   {
     "i": 949,
     "s": "DSC",
     "e": "3x05",
     "t": "Die Trying",
-    "c": 951,
+    "c": 947,
     "a": 798,
     "k": "Y",
     "d": "2020-11-12",
@@ -15198,14 +15198,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Die_Trying_(episode)",
-    "tt": 953
+    "tt": 949
   },
   {
     "i": 950,
     "s": "DSC",
     "e": "3x06",
     "t": "Scavengers",
-    "c": 952,
+    "c": 948,
     "a": 799,
     "k": "Y",
     "d": "2020-11-19",
@@ -15214,14 +15214,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Scavengers_(episode)",
-    "tt": 954
+    "tt": 950
   },
   {
     "i": 951,
     "s": "DSC",
     "e": "3x07",
     "t": "Unification III",
-    "c": 953,
+    "c": 949,
     "a": 800,
     "k": "Y",
     "d": "2020-11-26",
@@ -15230,14 +15230,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Unification_III_(episode)",
-    "tt": 955
+    "tt": 951
   },
   {
     "i": 952,
     "s": "DSC",
     "e": "3x08",
     "t": "The Sanctuary",
-    "c": 954,
+    "c": 950,
     "a": 801,
     "k": "Y",
     "d": "2020-12-03",
@@ -15246,14 +15246,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Sanctuary_(episode)",
-    "tt": 956
+    "tt": 952
   },
   {
     "i": 953,
     "s": "DSC",
     "e": "3x09",
     "t": "Terra Firma, Part 1",
-    "c": 955,
+    "c": 951,
     "a": 802,
     "k": "Y",
     "d": "2020-12-10",
@@ -15262,14 +15262,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Terra_Firma,_Part_1_(episode)",
-    "tt": 957
+    "tt": 953
   },
   {
     "i": 954,
     "s": "DSC",
     "e": "3x10",
     "t": "Terra Firma, Part 2",
-    "c": 956,
+    "c": 952,
     "a": 803,
     "k": "Y",
     "d": "2020-12-17",
@@ -15278,15 +15278,15 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Terra_Firma,_Part_2_(episode)",
-    "tt": 958
+    "tt": 954
   },
   {
     "i": 955,
     "s": "Long Trek",
     "e": "Movie 14",
     "t": "Section 31",
-    "c": 957,
-    "a": 954,
+    "c": 953,
+    "a": 953,
     "k": "Y",
     "d": "2025-01-24",
     "dist": "Paramount Plus",
@@ -15301,7 +15301,7 @@
     "s": "DSC",
     "e": "3x11",
     "t": "Su'Kal",
-    "c": 958,
+    "c": 954,
     "a": 804,
     "k": "Y",
     "d": "2020-12-24",
@@ -15310,14 +15310,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Su%27Kal_(episode)",
-    "tt": 959
+    "tt": 955
   },
   {
     "i": 957,
     "s": "DSC",
     "e": "3x12",
     "t": "There Is A Tide...",
-    "c": 959,
+    "c": 955,
     "a": 805,
     "k": "Y",
     "d": "2020-12-31",
@@ -15326,14 +15326,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/There_Is_A_Tide..._(episode)",
-    "tt": 960
+    "tt": 956
   },
   {
     "i": 958,
     "s": "DSC",
     "e": "3x13",
     "t": "That Hope Is You, Part 2",
-    "c": 960,
+    "c": 956,
     "a": 806,
     "k": "Y",
     "d": "2021-01-07",
@@ -15342,14 +15342,14 @@
     "y": 3189,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/That_Hope_Is_You,_Part_2_(episode)",
-    "tt": 961
+    "tt": 957
   },
   {
     "i": 959,
     "s": "DSC",
     "e": "4x01",
     "t": "Kobayashi Maru",
-    "c": 961,
+    "c": 957,
     "a": 821,
     "k": "Y",
     "d": "2021-11-18",
@@ -15358,14 +15358,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Kobayashi_Maru_(episode)",
-    "tt": 962
+    "tt": 958
   },
   {
     "i": 960,
     "s": "DSC",
     "e": "4x02",
     "t": "Anomaly",
-    "c": 962,
+    "c": 958,
     "a": 822,
     "k": "Y",
     "d": "2021-11-25",
@@ -15374,14 +15374,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Anomaly_(DIS)_(episode)",
-    "tt": 963
+    "tt": 959
   },
   {
     "i": 961,
     "s": "DSC",
     "e": "4x03",
     "t": "Choose to Live",
-    "c": 963,
+    "c": 959,
     "a": 823,
     "k": "Y",
     "d": "2021-12-02",
@@ -15390,14 +15390,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Choose_to_Live_(episode)",
-    "tt": 964
+    "tt": 960
   },
   {
     "i": 962,
     "s": "DSC",
     "e": "4x04",
     "t": "All Is Possible",
-    "c": 964,
+    "c": 960,
     "a": 824,
     "k": "Y",
     "d": "2021-12-09",
@@ -15406,14 +15406,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/All_Is_Possible_(episode)",
-    "tt": 965
+    "tt": 961
   },
   {
     "i": 963,
     "s": "DSC",
     "e": "4x05",
     "t": "The Examples",
-    "c": 965,
+    "c": 961,
     "a": 825,
     "k": "Y",
     "d": "2021-12-16",
@@ -15422,14 +15422,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Examples_(episode)",
-    "tt": 966
+    "tt": 962
   },
   {
     "i": 964,
     "s": "DSC",
     "e": "4x06",
     "t": "Stormy Weather",
-    "c": 966,
+    "c": 962,
     "a": 826,
     "k": "Y",
     "d": "2021-12-23",
@@ -15438,14 +15438,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Stormy_Weather_(episode)",
-    "tt": 967
+    "tt": 963
   },
   {
     "i": 965,
     "s": "DSC",
     "e": "4x07",
     "t": "...But to Connect",
-    "c": 967,
+    "c": 963,
     "a": 827,
     "k": "Y",
     "d": "2021-12-30",
@@ -15454,14 +15454,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/...But_to_Connect_(episode)",
-    "tt": 968
+    "tt": 964
   },
   {
     "i": 966,
     "s": "DSC",
     "e": "4x08",
     "t": "All In",
-    "c": 968,
+    "c": 964,
     "a": 833,
     "k": "Y",
     "d": "2022-02-10",
@@ -15470,14 +15470,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/All_In_(episode)",
-    "tt": 969
+    "tt": 965
   },
   {
     "i": 967,
     "s": "DSC",
     "e": "4x09",
     "t": "Rubicon",
-    "c": 969,
+    "c": 965,
     "a": 834,
     "k": "Y",
     "d": "2022-02-18",
@@ -15486,14 +15486,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Rubicon_(episode)",
-    "tt": 970
+    "tt": 966
   },
   {
     "i": 968,
     "s": "DSC",
     "e": "4x10",
     "t": "The Galactic Barrier",
-    "c": 970,
+    "c": 966,
     "a": 835,
     "k": "Y",
     "d": "2022-02-23",
@@ -15502,14 +15502,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Galactic_Barrier_(episode)",
-    "tt": 971
+    "tt": 967
   },
   {
     "i": 969,
     "s": "DSC",
     "e": "4x11",
     "t": "Rosetta",
-    "c": 971,
+    "c": 967,
     "a": 836,
     "k": "Y",
     "d": "2022-03-02",
@@ -15518,14 +15518,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Rosetta_(episode)",
-    "tt": 972
+    "tt": 968
   },
   {
     "i": 970,
     "s": "DSC",
     "e": "4x12",
     "t": "Species Ten-C",
-    "c": 972,
+    "c": 968,
     "a": 838,
     "k": "Y",
     "d": "2022-03-09",
@@ -15534,14 +15534,14 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Species_Ten-C_(episode)",
-    "tt": 973
+    "tt": 969
   },
   {
     "i": 971,
     "s": "DSC",
     "e": "4x13",
     "t": "Coming Home",
-    "c": 973,
+    "c": 969,
     "a": 840,
     "k": "Y",
     "d": "2022-03-16",
@@ -15550,15 +15550,15 @@
     "y": 3190,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Coming_Home_(episode)",
-    "tt": 974
+    "tt": 970
   },
   {
     "i": 972,
     "s": "DSC",
     "e": "5x01",
     "t": "Red Directive",
-    "c": 974,
-    "a": 913,
+    "c": 970,
+    "a": 912,
     "k": "Y",
     "d": "2024-04-04",
     "dist": "Paramount Plus",
@@ -15566,15 +15566,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Red_Directive_(episode)",
-    "tt": 975
+    "tt": 971
   },
   {
     "i": 973,
     "s": "DSC",
     "e": "5x02",
     "t": "Under the Twin Moons",
-    "c": 975,
-    "a": 914,
+    "c": 971,
+    "a": 913,
     "k": "Y",
     "d": "2024-04-04",
     "dist": "Paramount Plus",
@@ -15582,15 +15582,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Under_the_Twin_Moons_(episode)",
-    "tt": 976
+    "tt": 972
   },
   {
     "i": 974,
     "s": "DSC",
     "e": "5x03",
     "t": "Jinaal",
-    "c": 976,
-    "a": 915,
+    "c": 972,
+    "a": 914,
     "k": "Y",
     "d": "2024-04-11",
     "dist": "Paramount Plus",
@@ -15598,15 +15598,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Jinaal_(episode)",
-    "tt": 977
+    "tt": 973
   },
   {
     "i": 975,
     "s": "DSC",
     "e": "5x04",
     "t": "Face the Strange",
-    "c": 977,
-    "a": 916,
+    "c": 973,
+    "a": 915,
     "k": "Y",
     "d": "2024-04-18",
     "dist": "Paramount Plus",
@@ -15614,15 +15614,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Face_the_Strange_(episode)",
-    "tt": 978
+    "tt": 974
   },
   {
     "i": 976,
     "s": "DSC",
     "e": "5x05",
     "t": "Mirrors",
-    "c": 978,
-    "a": 917,
+    "c": 974,
+    "a": 916,
     "k": "Y",
     "d": "2024-04-25",
     "dist": "Paramount Plus",
@@ -15630,15 +15630,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Mirrors_(episode)",
-    "tt": 979
+    "tt": 975
   },
   {
     "i": 977,
     "s": "DSC",
     "e": "5x06",
     "t": "Whistlespeak",
-    "c": 979,
-    "a": 918,
+    "c": 975,
+    "a": 917,
     "k": "Y",
     "d": "2024-05-02",
     "dist": "Paramount Plus",
@@ -15646,15 +15646,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Whistlespeak_(episode)",
-    "tt": 980
+    "tt": 976
   },
   {
     "i": 978,
     "s": "DSC",
     "e": "5x07",
     "t": "Erigah",
-    "c": 980,
-    "a": 919,
+    "c": 976,
+    "a": 918,
     "k": "Y",
     "d": "2024-05-09",
     "dist": "Paramount Plus",
@@ -15662,15 +15662,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Erigah_(episode)",
-    "tt": 981
+    "tt": 977
   },
   {
     "i": 979,
     "s": "DSC",
     "e": "5x08",
     "t": "Labyrinths",
-    "c": 981,
-    "a": 920,
+    "c": 977,
+    "a": 919,
     "k": "Y",
     "d": "2024-05-16",
     "dist": "Paramount Plus",
@@ -15678,15 +15678,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Labyrinths_(episode)",
-    "tt": 982
+    "tt": 978
   },
   {
     "i": 980,
     "s": "DSC",
     "e": "5x09",
     "t": "Lagrange Point",
-    "c": 982,
-    "a": 921,
+    "c": 978,
+    "a": 920,
     "k": "Y",
     "d": "2024-05-23",
     "dist": "Paramount Plus",
@@ -15694,15 +15694,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Lagrange_Point_(episode)",
-    "tt": 983
+    "tt": 979
   },
   {
     "i": 981,
     "s": "DSC",
     "e": "5x10",
     "t": "Life, Itself",
-    "c": 983,
-    "a": 922,
+    "c": 979,
+    "a": 921,
     "k": "Y",
     "d": "2024-05-30",
     "dist": "Paramount Plus",
@@ -15710,15 +15710,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Life,_Itself_(episode)",
-    "tt": 984
+    "tt": 980
   },
   {
     "i": 982,
     "s": "SA",
     "e": "1x01",
     "t": "Kids These Days",
-    "c": 984,
-    "a": 975,
+    "c": 980,
+    "a": 973,
     "k": "Y",
     "d": "2026-01-15",
     "dist": "Paramount Plus",
@@ -15726,15 +15726,15 @@
     "y": "3170s-3191",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Kids_These_Days_(episode)",
-    "tt": 985
+    "tt": 981
   },
   {
     "i": 983,
     "s": "SA",
     "e": "1x02",
     "t": "Beta Test",
-    "c": 985,
-    "a": 976,
+    "c": 981,
+    "a": 974,
     "k": "Y",
     "d": "2026-01-15",
     "dist": "Paramount Plus",
@@ -15742,15 +15742,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Beta_Test_(episode)",
-    "tt": 986
+    "tt": 982
   },
   {
     "i": 984,
     "s": "SA",
     "e": "1x03",
     "t": "Vitus Reflux",
-    "c": 986,
-    "a": 977,
+    "c": 982,
+    "a": 975,
     "k": "Y",
     "d": "2026-01-22",
     "dist": "Paramount Plus",
@@ -15758,15 +15758,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Vitus_Reflux_(episode)",
-    "tt": 987
+    "tt": 983
   },
   {
     "i": 985,
     "s": "SA",
     "e": "1x04",
     "t": "Vox In Excelso",
-    "c": 987,
-    "a": 979,
+    "c": 983,
+    "a": 976,
     "k": "Y",
     "d": "2026-01-29",
     "dist": "Paramount Plus",
@@ -15774,15 +15774,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Vox_In_Excelso_(episode)",
-    "tt": 988
+    "tt": 984
   },
   {
     "i": 986,
     "s": "SA",
     "e": "1x05",
     "t": "Series Acclimation Mil",
-    "c": 988,
-    "a": 980,
+    "c": 984,
+    "a": 977,
     "k": "Y",
     "d": "2026-02-05",
     "dist": "Paramount Plus",
@@ -15790,15 +15790,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Series_Acclimation_Mil_(episode)",
-    "tt": 989
+    "tt": 985
   },
   {
     "i": 987,
     "s": "SA",
     "e": "1x06",
     "t": "Come, Let's Away",
-    "c": 989,
-    "a": 981,
+    "c": 985,
+    "a": 978,
     "k": "Y",
     "d": "2026-02-12",
     "dist": "Paramount Plus",
@@ -15806,15 +15806,15 @@
     "y": 3191,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Come,_Let%27s_Away_(episode)",
-    "tt": 990
+    "tt": 986
   },
   {
     "i": 988,
     "s": "SA",
     "e": "1x07",
     "t": "Ko'Zeine",
-    "c": 990,
-    "a": 982,
+    "c": 986,
+    "a": 979,
     "k": "Y",
     "d": "2026-02-19",
     "dist": "Paramount Plus",
@@ -15822,15 +15822,15 @@
     "y": 3192,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ko%27Zeine_(episode)",
-    "tt": 991
+    "tt": 987
   },
   {
     "i": 989,
     "s": "SA",
     "e": "1x08",
     "t": "The Life of the Stars",
-    "c": 991,
-    "a": 983,
+    "c": 987,
+    "a": 980,
     "k": "Y",
     "d": "2026-02-26",
     "dist": "Paramount Plus",
@@ -15838,15 +15838,15 @@
     "y": 3192,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Life_of_the_Stars_(episode)",
-    "tt": 992
+    "tt": 988
   },
   {
     "i": 990,
     "s": "SA",
     "e": "1x09",
     "t": "300th Night",
-    "c": 992,
-    "a": 984,
+    "c": 988,
+    "a": 981,
     "k": "Y",
     "d": "2026-03-05",
     "dist": "Paramount Plus",
@@ -15854,15 +15854,15 @@
     "y": 3192,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/300th_Night_(episode)",
-    "tt": 993
+    "tt": 989
   },
   {
     "i": 991,
     "s": "SA",
     "e": "1x10",
     "t": "Rubincon",
-    "c": 993,
-    "a": 985,
+    "c": 989,
+    "a": 982,
     "k": "Y",
     "d": "2026-03-12",
     "dist": "Paramount Plus",
@@ -15870,14 +15870,14 @@
     "y": 3192,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Rubincon_(episode)",
-    "tt": 994
+    "tt": 990
   },
   {
     "i": 992,
     "s": "Short Trek",
     "e": "1x02",
     "t": "Calypso",
-    "c": 994,
+    "c": 990,
     "a": 750,
     "k": "Y",
     "d": "2018-11-08",
@@ -15886,14 +15886,14 @@
     "y": "4200s",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Calypso_(episode)",
-    "tt": 995
+    "tt": 991
   },
   {
     "i": 993,
     "s": "Short",
     "e": "",
     "t": "765874",
-    "c": 995,
+    "c": 991,
     "a": 848,
     "k": "?",
     "d": "2022-05-03",
@@ -15902,14 +15902,14 @@
     "y": "",
     "n": "",
     "url": "https://www.youtube.com/watch?v=Ng8qTIythnA",
-    "tt": 996
+    "tt": 992
   },
   {
     "i": 994,
     "s": "Short",
     "e": "",
     "t": "765874 - Memory Wall",
-    "c": 996,
+    "c": 992,
     "a": 861,
     "k": "?",
     "d": "2022-08-26",
@@ -15918,15 +15918,15 @@
     "y": "",
     "n": "",
     "url": "https://www.youtube.com/watch?v=fzeznWVQu5o",
-    "tt": 997
+    "tt": 993
   },
   {
     "i": 995,
     "s": "SCO",
     "e": "3x1-5",
     "t": "Star Trek: Scouts Season 3",
-    "c": 865,
-    "a": 996,
+    "c": 862.3,
+    "a": 992.5,
     "k": "N",
     "d": "2026-09-08",
     "dist": "Youtube/Nick Jr.",
@@ -15934,6 +15934,6 @@
     "y": "",
     "n": "Show for toddlers. Air date listed is premiere date.",
     "url": "https://memory-alpha.fandom.com/wiki/Star_Trek:_Scouts",
-    "tt": 882
+    "tt": 879.3
   }
 ]
