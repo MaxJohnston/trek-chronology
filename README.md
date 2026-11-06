@@ -1,6 +1,6 @@
 # Master Chronology: A Star Trek Watch Order
 
-A single-page viewing guide to the whole Star Trek franchise. It lists 995 entries (episodes, films, shorts, an audio drama and a few comics) across 20 series and productions, and lets you watch them in three different orders while keeping track of what you've seen.
+A single-page viewing guide to the whole Star Trek franchise. It lists 990+ entries (episodes, films, shorts, an audio drama and a few comics) across 20 series and productions, and lets you watch them in three different orders while keeping track of what you've seen.
 
 It's plain HTML, CSS and JavaScript with no framework, no build step and no backend. Your watch history is stored in your own browser.
 
