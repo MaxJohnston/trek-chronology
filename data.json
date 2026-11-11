@@ -8297,7 +8297,7 @@
     "k": "Y",
     "d": "1994-11-07",
     "dist": "Syndication",
-    "sd": 48388.8,
+    "sd": "Unknown",
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Civil_Defense_(episode)",
@@ -8587,7 +8587,7 @@
     "d": "1995-02-27",
     "dist": "Syndication",
     "sd": 48576.7,
-    "y": 2371,
+    "y": "Unknown",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Visionary_(episode)",
     "tt": 569
@@ -8650,7 +8650,7 @@
     "k": "Y",
     "d": "1995-04-10",
     "dist": "Syndication",
-    "sd": 48592.2,
+    "sd": "Unknown",
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Distant_Voices_(episode)",
@@ -8892,7 +8892,7 @@
     "dist": "UPN",
     "sd": 48975.1,
     "y": 2371,
-    "n": "",
+    "n": "Filmed during production season 1",
     "url": "https://memory-alpha.fandom.com/wiki/The_37%27s_(episode)",
     "tt": 581
   },
@@ -8924,7 +8924,7 @@
     "dist": "UPN",
     "sd": 48892.1,
     "y": 2372,
-    "n": "",
+    "n": "Filmed during production season 1",
     "url": "https://memory-alpha.fandom.com/wiki/Projections_(episode)",
     "tt": 578
   },
@@ -8940,7 +8940,7 @@
     "dist": "UPN",
     "sd": 48921.3,
     "y": 2372,
-    "n": "",
+    "n": "Filmed during production season 1",
     "url": "https://memory-alpha.fandom.com/wiki/Elogium_(episode)",
     "tt": 579
   },
@@ -8988,7 +8988,7 @@
     "dist": "UPN",
     "sd": "Unknown",
     "y": 2372,
-    "n": "",
+    "n": "Filmed during production season 1",
     "url": "https://memory-alpha.fandom.com/wiki/Twisted_(episode)",
     "tt": 584
   },
