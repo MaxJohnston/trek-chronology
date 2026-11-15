@@ -1506,10 +1506,10 @@
   {
     "i": 94,
     "s": "Short Trek",
-    "e": "2x04",
+    "e": "2x05",
     "t": "The Girl Who Made the Stars",
     "c": 95,
-    "a": 770,
+    "a": 771,
     "k": "Y",
     "d": "2019-12-12",
     "dist": "CBS All-Access",
@@ -2905,7 +2905,7 @@
     "k": "Y",
     "d": "1966-10-27",
     "dist": "NBC",
-    "sd": "2713.5 - 2713.3",
+    "sd": "2713.5",
     "y": 2266,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Miri_(episode)",
@@ -4450,10 +4450,10 @@
   {
     "i": 278,
     "s": "Short Trek",
-    "e": "2x05",
+    "e": "2x04",
     "t": "Ephraim and Dot",
     "c": 279,
-    "a": 771,
+    "a": 770,
     "k": "N",
     "d": "2019-12-12",
     "dist": "CBS All-Access",
@@ -6986,7 +6986,7 @@
     "d": "1993-02-15",
     "dist": "Syndication",
     "sd": "Unknown",
-    "y": 2369,
+    "y": "2369 (2327 Time Travel)",
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Tapestry_(episode)",
     "tt": 318
@@ -7261,7 +7261,7 @@
     "y": 2369,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Forsaken_(episode)",
-    "tt": 481
+    "tt": 482
   },
   {
     "i": 454,
@@ -7293,7 +7293,7 @@
     "y": 2369,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Dramatis_Personae_(episode)",
-    "tt": 482
+    "tt": 481
   },
   {
     "i": 456,
@@ -7433,11 +7433,11 @@
     "k": "Y",
     "d": "1993-10-04",
     "dist": "Syndication",
-    "sd": 47215.5,
+    "sd": "Unknown",
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Interface_(episode)",
-    "tt": 492
+    "tt": 496
   },
   {
     "i": 465,
@@ -7469,7 +7469,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Gambit,_Part_I_(episode)",
-    "tt": 493
+    "tt": 492
   },
   {
     "i": 467,
@@ -7501,7 +7501,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Gambit,_Part_II_(episode)",
-    "tt": 494
+    "tt": 493
   },
   {
     "i": 469,
@@ -7533,7 +7533,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Cardassians_(episode)",
-    "tt": 496
+    "tt": 494
   },
   {
     "i": 471,
@@ -7661,7 +7661,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Inheritance_(episode)",
-    "tt": 505
+    "tt": 509
   },
   {
     "i": 479,
@@ -7677,7 +7677,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Parallels_(episode)",
-    "tt": 506
+    "tt": 505
   },
   {
     "i": 480,
@@ -7693,7 +7693,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Sanctuary_(episode)",
-    "tt": 507
+    "tt": 506
   },
   {
     "i": 481,
@@ -7709,7 +7709,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Rivals_(episode)",
-    "tt": 508
+    "tt": 507
   },
   {
     "i": 482,
@@ -7725,7 +7725,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Alternate_(episode)",
-    "tt": 509
+    "tt": 508
   },
   {
     "i": 483,
@@ -7741,7 +7741,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Pegasus_(episode)",
-    "tt": 510
+    "tt": 511
   },
   {
     "i": 484,
@@ -7757,7 +7757,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/These_Are_the_Voyages..._(episode)",
-    "tt": 511
+    "tt": 512
   },
   {
     "i": 485,
@@ -7773,7 +7773,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Homeward_(episode)",
-    "tt": 512
+    "tt": 510
   },
   {
     "i": 486,
@@ -7821,7 +7821,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Whispers_(episode)",
-    "tt": 516
+    "tt": 517
   },
   {
     "i": 489,
@@ -7853,7 +7853,7 @@
     "y": 2370,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Paradise_(episode)",
-    "tt": 517
+    "tt": 516
   },
   {
     "i": 491,
@@ -8334,7 +8334,7 @@
     "n": "Prologue takes place in 2293 (Stardate 9715.5)",
     "url": "https://memory-alpha.fandom.com/wiki/Star_Trek_Generations",
     "tt": 316,
-    "tt2": 560
+    "tt2": 561
   },
   {
     "i": 521,
@@ -8350,7 +8350,7 @@
     "y": 2371,
     "n": "",
     "url": "https://www.youtube.com/watch?v=_KXU2Ob8gYY",
-    "tt": 561
+    "tt": 562
   },
   {
     "i": 522,
@@ -8558,7 +8558,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Prophet_Motive_(episode)",
-    "tt": 569
+    "tt": 570
   },
   {
     "i": 535,
@@ -8574,7 +8574,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Eye_of_the_Needle_(episode)",
-    "tt": 557
+    "tt": 558
   },
   {
     "i": 536,
@@ -8590,7 +8590,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Visionary_(episode)",
-    "tt": 570
+    "tt": 557
   },
   {
     "i": 537,
@@ -8606,7 +8606,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Ex_Post_Facto_(episode)",
-    "tt": 558
+    "tt": 559
   },
   {
     "i": 538,
@@ -8622,7 +8622,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Emanations_(episode)",
-    "tt": 559
+    "tt": 560
   },
   {
     "i": 539,
@@ -8638,7 +8638,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Prime_Factors_(episode)",
-    "tt": 562
+    "tt": 563
   },
   {
     "i": 540,
@@ -8670,7 +8670,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/State_of_Flux_(episode)",
-    "tt": 563
+    "tt": 564
   },
   {
     "i": 542,
@@ -8718,7 +8718,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Heroes_and_Demons_(episode)",
-    "tt": 564
+    "tt": 565
   },
   {
     "i": 545,
@@ -8750,7 +8750,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Cathexis_(episode)",
-    "tt": 565
+    "tt": 566
   },
   {
     "i": 547,
@@ -8782,7 +8782,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Faces_(episode)",
-    "tt": 566
+    "tt": 567
   },
   {
     "i": 549,
@@ -8814,7 +8814,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Jetrel_(episode)",
-    "tt": 567
+    "tt": 568
   },
   {
     "i": 551,
@@ -8846,7 +8846,7 @@
     "y": 2371,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Learning_Curve_(episode)",
-    "tt": 568
+    "tt": 569
   },
   {
     "i": 553,
@@ -8974,7 +8974,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Way_of_the_Warrior_(episode)",
-    "tt": 589
+    "tt": 586
   },
   {
     "i": 561,
@@ -9006,7 +9006,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Visitor_(episode)",
-    "tt": 590
+    "tt": 587
   },
   {
     "i": 563,
@@ -9022,7 +9022,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Parturition_(episode)",
-    "tt": 586
+    "tt": 589
   },
   {
     "i": 564,
@@ -9038,7 +9038,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Hippocratic_Oath_(episode)",
-    "tt": 591
+    "tt": 588
   },
   {
     "i": 565,
@@ -9086,7 +9086,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Persistence_of_Vision_(episode)",
-    "tt": 587
+    "tt": 590
   },
   {
     "i": 568,
@@ -9102,7 +9102,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Tattoo_(episode)",
-    "tt": 588
+    "tt": 591
   },
   {
     "i": 569,
@@ -9118,7 +9118,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Starship_Down_(episode)",
-    "tt": 595
+    "tt": 596
   },
   {
     "i": 570,
@@ -9182,7 +9182,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Maneuvers_(episode)",
-    "tt": 596
+    "tt": 595
   },
   {
     "i": 574,
@@ -9278,7 +9278,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Alliances_(episode)",
-    "tt": 603
+    "tt": 604
   },
   {
     "i": 580,
@@ -9310,7 +9310,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Threshold_(episode)",
-    "tt": 604
+    "tt": 605
   },
   {
     "i": 582,
@@ -9342,7 +9342,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Meld_(episode)",
-    "tt": 605
+    "tt": 606
   },
   {
     "i": 584,
@@ -9374,7 +9374,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Dreadnought_(episode)",
-    "tt": 606
+    "tt": 607
   },
   {
     "i": 586,
@@ -9406,7 +9406,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Death_Wish_(episode)",
-    "tt": 607
+    "tt": 603
   },
   {
     "i": 588,
@@ -9438,7 +9438,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Lifesigns_(episode)",
-    "tt": 608
+    "tt": 609
   },
   {
     "i": 590,
@@ -9454,7 +9454,7 @@
     "y": 2372,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Investigations_(episode)",
-    "tt": 609
+    "tt": 608
   },
   {
     "i": 591,
@@ -11374,7 +11374,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Image_in_the_Sand_(episode)",
-    "tt": 734
+    "tt": 733
   },
   {
     "i": 711,
@@ -11390,7 +11390,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Shadows_and_Symbols_(episode)",
-    "tt": 735
+    "tt": 734
   },
   {
     "i": 712,
@@ -11582,7 +11582,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Timeless_(episode)",
-    "tt": 733
+    "tt": 735
   },
   {
     "i": 724,
@@ -11918,7 +11918,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Fight_(episode)",
-    "tt": 768
+    "tt": 762
   },
   {
     "i": 745,
@@ -11934,7 +11934,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Think_Tank_(episode)",
-    "tt": 769
+    "tt": 763
   },
   {
     "i": 746,
@@ -11966,7 +11966,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/%27Til_Death_Do_Us_Part_(episode)",
-    "tt": 762
+    "tt": 766
   },
   {
     "i": 748,
@@ -11982,7 +11982,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Strange_Bedfellows_(episode)",
-    "tt": 763
+    "tt": 767
   },
   {
     "i": 749,
@@ -11998,7 +11998,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Juggernaut_(episode)",
-    "tt": 770
+    "tt": 764
   },
   {
     "i": 750,
@@ -12014,7 +12014,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/The_Changing_Face_of_Evil_(episode)",
-    "tt": 764
+    "tt": 768
   },
   {
     "i": 751,
@@ -12030,7 +12030,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Someone_to_Watch_Over_Me_(episode)",
-    "tt": 771
+    "tt": 765
   },
   {
     "i": 752,
@@ -12046,7 +12046,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/When_It_Rains..._(episode)",
-    "tt": 765
+    "tt": 769
   },
   {
     "i": 753,
@@ -12078,7 +12078,7 @@
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Tacking_Into_the_Wind_(episode)",
-    "tt": 766
+    "tt": 770
   },
   {
     "i": 755,
@@ -12106,11 +12106,11 @@
     "k": "Y",
     "d": "1999-05-19",
     "dist": "Syndication",
-    "sd": 52645.7,
+    "sd": "Unknown",
     "y": 2375,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Extreme_Measures_(episode)",
-    "tt": 767
+    "tt": 771
   },
   {
     "i": 757,
@@ -12270,7 +12270,7 @@
     "y": 2376,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Riddles_(episode)",
-    "tt": 783
+    "tt": 784
   },
   {
     "i": 767,
@@ -12286,7 +12286,7 @@
     "y": 2376,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Dragon%27s_Teeth_(episode)",
-    "tt": 784
+    "tt": 783
   },
   {
     "i": 768,
@@ -12382,7 +12382,7 @@
     "y": 2376,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Virtuoso_(episode)",
-    "tt": 790
+    "tt": 791
   },
   {
     "i": 774,
@@ -12398,7 +12398,7 @@
     "y": 2376,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Memorial_(episode)",
-    "tt": 791
+    "tt": 792
   },
   {
     "i": 775,
@@ -12414,7 +12414,7 @@
     "y": 2376,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Tsunkatse_(episode)",
-    "tt": 792
+    "tt": 790
   },
   {
     "i": 776,
@@ -12622,7 +12622,7 @@
     "y": 2377,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Imperfection_(episode)",
-    "tt": 805
+    "tt": 807
   },
   {
     "i": 789,
@@ -12638,7 +12638,7 @@
     "y": 2377,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Drive_(episode)",
-    "tt": 806
+    "tt": 805
   },
   {
     "i": 790,
@@ -12654,7 +12654,7 @@
     "y": 2377,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Repression_(episode)",
-    "tt": 807
+    "tt": 806
   },
   {
     "i": 791,
@@ -13162,7 +13162,7 @@
     "k": "Y",
     "d": "2021-08-12",
     "dist": "Paramount Plus",
-    "sd": "57995.8",
+    "sd": "Unknown",
     "y": 2381,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Strange_Energies_(episode)",
@@ -14478,7 +14478,7 @@
     "y": 2385,
     "n": "",
     "url": "https://memory-alpha.fandom.com/wiki/Children_of_Mars_(episode)",
-    "tt": 919
+    "tt": 920
   },
   {
     "i": 905,
@@ -14494,7 +14494,7 @@
     "y": "2386 (2385 Flashback)",
     "n": "Most of the story is a flashback to before the events of Children of Mars.",
     "url": "https://memory-beta.fandom.com/wiki/Picard:_Countdown",
-    "tt": 920
+    "tt": 919
   },
   {
     "i": 906,
@@ -15926,7 +15926,7 @@
     "e": "3x1-5",
     "t": "Star Trek: Scouts Season 3",
     "c": 862.3,
-    "a": 992.5,
+    "a": 989.5,
     "k": "N",
     "d": "2026-09-08",
     "dist": "Youtube/Nick Jr.",
